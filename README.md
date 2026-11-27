@@ -1,24 +1,21 @@
 <div align="center">
 
-```text
-██╗   ██╗███████╗ ██████╗████████╗ ██████╗ ██╗     ██╗     
-██║   ██║██╔════╝██╔════╝╚══██╔══╝██╔═══██╗██║     ██║     
-██║   ██║█████╗  ██║        ██║   ██║   ██║██║     ██║     
-╚██╗ ██╔╝██╔══╝  ██║        ██║   ██║   ██║██║     ██║     
- ╚████╔╝ ███████╗╚██████╗   ██║   ╚██████╔╝███████╗███████╗
-  ╚═══╝  ╚══════╝ ╚═════╝   ╚═╝    ╚═════╝ ╚══════╝╚══════╝
-```
+<a href="https://vectoll.org">
+  <img src="./brand/readme-banner.svg" alt="Vectoll — Open Protocol for AI Agent Metering & Global Multi-Rail Settlement" width="100%" />
+</a>
 
 # Vectoll
 
 **Add AI Agent Metering & Global Payments to Any API, Website, or MCP Server in 3 Lines**
 
+[![Open Protocol](https://img.shields.io/badge/Protocol-vectoll.org-10B981.svg)](https://vectoll.org)
+[![Vectoll Cloud](https://img.shields.io/badge/Cloud-vectoll.com-2563EB.svg)](https://vectoll.com)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-0F172A.svg)](./LICENSE)
 [![Release: v1.0.0](https://img.shields.io/badge/Release-v1.0.0-10B981.svg)](./CHANGELOG.md)
 [![x402 Compatible](https://img.shields.io/badge/x402-V2_Compatible-2563EB.svg)](./docs/spec/RFC-0001-core-protocol.md)
 [![MCP Native](https://img.shields.io/badge/MCP-Auto--Wrapper-7C3AED.svg)](./docs/integration-guide.md)
 
-[**Integration Guide**](./docs/integration-guide.md) · [**5-Minute Quickstart**](./docs/developer-quickstart.md) · [**Configuration**](./docs/configuration-and-deployment.md) · [**Architecture**](./docs/architecture.md) · [**Protocol RFCs**](./docs/spec/RFC-0001-core-protocol.md)
+[**vectoll.org (Protocol & Docs)**](https://vectoll.org) · [**vectoll.com (Managed Cloud)**](https://vectoll.com) · [**Integration Guide**](./docs/integration-guide.md) · [**5-Minute Quickstart**](./docs/developer-quickstart.md) · [**Protocol RFCs**](./docs/spec/RFC-0001-core-protocol.md) · [**Brand Assets**](./brand/BRAND_GUIDELINES.md)
 
 </div>
 

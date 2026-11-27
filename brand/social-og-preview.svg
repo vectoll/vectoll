@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none" role="img" aria-label="Vectoll OpenGraph Social Preview">
+  <defs>
+    <linearGradient id="ogBg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06090F"/>
+      <stop offset="100%" stop-color="#0D1526"/>
+    </linearGradient>
+    <pattern id="ogGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E293B" stroke-width="0.9" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+  <rect width="1200" height="630" fill="url(#ogGrid)"/>
+  <rect x="28" y="28" width="1144" height="574" rx="20" stroke="#1E293B" stroke-width="2" fill="none"/>
+
+  <g font-family="ui-monospace, monospace" font-size="16" fill="#10B981">
+    <circle cx="80" cy="84" r="6" fill="#10B981"/>
+    <text x="98" y="90" letter-spacing="2">OPEN PROTOCOL v1.0 · APACHE 2.0</text>
+  </g>
+  <text x="1120" y="90" text-anchor="end" font-family="ui-monospace, monospace" font-size="16" fill="#94A3B8">vectoll.org  |  vectoll.com</text>
+
+  <!-- Large extruded VECTOLL wordmark -->
+  <g transform="translate(220, 185)">
+    <g stroke="#64748B" stroke-width="2.5" fill="none">
+      <polygon points="10,10 34,10 34,68 52,68 52,86 70,86 70,68 88,68 88,10 112,10 112,72 92,72 92,92 72,92 72,108 50,108 50,92 30,92 30,72 10,72"/>
+      <polygon points="132,10 218,10 218,32 156,32 156,48 206,48 206,70 156,70 156,86 218,86 218,108 132,108"/>
+      <polygon points="238,10 326,10 326,32 262,32 262,86 326,86 326,108 238,108"/>
+      <polygon points="346,10 442,10 442,32 406,32 406,108 382,108 382,32 346,32"/>
+      <path d="M462,10 H552 V108 H462 Z M486,32 V86 H528 V32 Z" fill-rule="evenodd"/>
+      <polygon points="572,10 596,10 596,86 648,86 648,108 572,108"/>
+      <polygon points="668,10 692,10 692,86 744,86 744,108 668,108"/>
+    </g>
+    <g fill="#F8FAFC">
+      <polygon points="0,0 24,0 24,58 42,58 42,76 60,76 60,58 78,58 78,0 102,0 102,62 82,62 82,82 62,82 62,98 40,98 40,82 20,82 20,62 0,62"/>
+      <polygon points="122,0 208,0 208,22 146,22 146,38 196,38 196,60 146,60 146,76 208,76 208,98 122,98"/>
+      <polygon points="228,0 316,0 316,22 252,22 252,76 316,76 316,98 228,98"/>
+      <polygon points="336,0 432,0 432,22 396,22 396,98 372,98 372,22 336,22"/>
+      <path d="M452,0 H542 V98 H452 Z M476,22 V76 H518 V22 Z" fill-rule="evenodd"/>
+      <polygon points="562,0 586,0 586,76 638,76 638,98 562,98"/>
+      <polygon points="658,0 682,0 682,76 734,76 734,98 658,98"/>
+    </g>
+    <rect x="750" y="84" width="16" height="16" fill="#10B981"/>
+  </g>
+
+  <text x="600" y="370" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="30" font-weight="700" fill="#F8FAFC">
+    The Economic Layer for the Agentic Web
+  </text>
+  <text x="600" y="416" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#94A3B8">
+    HTTP 402 · x402 V2 · Metered MCP · Ed25519 &amp; Passkey Mandates · 9 Global Rails
+  </text>
+
+  <rect x="260" y="480" width="680" height="58" rx="10" fill="#111827" stroke="#1E293B" stroke-width="1.5"/>
+  <text x="600" y="516" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#10B981">
+    $ npx @vectoll/cli init  ·  app.use(vectollMiddleware({ 'GET /api/*': '$0.005' }))
+  </text>
+</svg>

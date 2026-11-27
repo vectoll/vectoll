@@ -18,7 +18,8 @@
     "test": "pnpm -r --filter './packages/*' --filter './apps/*' run test",
     "typecheck": "pnpm -r --filter './packages/*' --filter './apps/*' run typecheck",
     "simulate": "node packages/cli/dist/bin.js simulate --rail x402_usdc",
-    "dev": "node packages/cli/dist/bin.js dev --config examples/global-cloud-ai/vectoll.yaml"
+    "dev": "node packages/cli/dist/bin.js dev --config examples/global-cloud-ai/vectoll.yaml",
+    "web": "node apps/web/server.mjs"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

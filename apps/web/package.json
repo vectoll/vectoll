@@ -1,0 +1,14 @@
+{
+  "name": "@vectoll/web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Vectoll flagship websites — vectoll.org (Open Protocol) and vectoll.com (Vectoll Cloud)",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs",
+    "build": "node -e \"console.log('@vectoll/web static assets ready')\"",
+    "typecheck": "node --check server.mjs",
+    "test": "node -e \"import('node:fs').then(fs => { for (const p of ['org/index.html','com/index.html','../../brand/readme-banner.svg','../../brand/logo-wordmark-dark.svg']) { if (!fs.existsSync(p)) throw new Error('Missing ' + p); } console.log('@vectoll/web assets verified'); })\""
+  }
+}

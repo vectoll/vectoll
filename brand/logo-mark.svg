@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" role="img" aria-label="Vectoll Mark">
+  <rect width="256" height="256" rx="44" fill="#090D16"/>
+  <rect x="6" y="6" width="244" height="244" rx="38" stroke="#1E293B" stroke-width="2"/>
+  <!-- Extruded wireframe V shadow -->
+  <polygon
+    points="66,58 106,58 106,138 122,138 122,162 154,162 154,138 170,138 170,58 210,58 210,148 182,148 182,182 154,182 154,208 122,208 122,182 94,182 94,148 66,148"
+    stroke="#64748B" stroke-width="3.5" fill="none"
+  />
+  <!-- Crisp solid white block V -->
+  <polygon
+    points="52,44 92,44 92,124 108,124 108,148 140,148 140,124 156,124 156,44 196,44 196,134 168,134 168,168 140,168 140,194 108,194 108,168 80,168 80,134 52,134"
+    fill="#F8FAFC"
+  />
+  <!-- Emerald settlement gate node -->
+  <rect x="184" y="182" width="22" height="22" fill="#10B981"/>
+</svg>

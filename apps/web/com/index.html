@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vectoll Cloud — Global Multi-Rail AI Agent Monetization &amp; Managed Treasury</title>
+  <meta name="description" content="Turn AI scraper &amp; agent traffic into instant global revenue. Managed Stripe, USDC (x402), SEPA, FedNow, PIX, UPI, PayNow, M-Pesa, and MTN MoMo settlement with hardware Passkey mandates and double-entry audit trails." />
+  <meta property="og:title" content="Vectoll Cloud — Monetize AI Agents Globally Without Blocking Humans" />
+  <meta property="og:description" content="Managed multi-rail settlement, WebAuthn Passkey guardrails, and instant payouts in 23 currencies." />
+  <meta property="og:image" content="/brand/social-og-preview.svg" />
+  <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg" />
+  <style>
+    :root {
+      --bg-0: #070A10;
+      --bg-1: #0D1117;
+      --bg-2: #121824;
+      --line: #1E293B;
+      --line-bright: #334155;
+      --ink-0: #F8FAFC;
+      --ink-1: #CBD5E1;
+      --ink-2: #94A3B8;
+      --ink-3: #64748B;
+      --emerald: #10B981;
+      --emerald-dim: rgba(16, 185, 129, 0.14);
+      --cobalt: #3B82F6;
+      --cobalt-dim: rgba(59, 130, 246, 0.14);
+      --violet: #8B5CF6;
+      --violet-dim: rgba(139, 92, 246, 0.14);
+      --amber: #F59E0B;
+      --mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
+      --sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-0);
+      color: var(--ink-0);
+      font-family: var(--sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image:
+        linear-gradient(rgba(30, 41, 59, 0.28) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 41, 59, 0.28) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    a { color: inherit; text-decoration: none; }
+    code { font-family: var(--mono); }
+
+    .wire-card {
+      background: var(--bg-1);
+      border: 1px solid var(--line-bright);
+      box-shadow: 5px 5px 0 0 var(--bg-0), 6px 6px 0 0 #334155;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+    .wire-card:hover { border-color: #64748B; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(7, 10, 16, 0.88);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand-lockup { display: flex; align-items: center; gap: 12px; }
+    .brand-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border: 1px solid var(--cobalt);
+      color: #93C5FD;
+      background: var(--cobalt-dim);
+    }
+    nav { display: flex; align-items: center; gap: 22px; font-size: 13px; color: var(--ink-1); }
+    nav a:hover { color: var(--ink-0); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 18px;
+      border: 1px solid var(--line-bright);
+      background: var(--bg-2);
+      color: var(--ink-0);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn:hover {
+      border-color: var(--ink-0);
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0 0 #334155;
+    }
+    .btn-primary {
+      background: var(--ink-0);
+      color: var(--bg-0);
+      border-color: var(--ink-0);
+      box-shadow: 4px 4px 0 0 var(--bg-0), 5px 5px 0 0 #64748B;
+    }
+    .btn-primary:hover {
+      background: #FFFFFF;
+      box-shadow: 5px 5px 0 0 var(--bg-0), 6px 6px 0 0 var(--cobalt);
+    }
+    .btn-sm { padding: 6px 12px; font-size: 12px; }
+
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 84px 0; }
+    .section-kicker {
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--cobalt);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(28px, 3.6vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .section-sub { color: var(--ink-2); font-size: 16px; max-width: 720px; margin-bottom: 36px; }
+
+    /* Hero */
+    .hero { padding: 72px 0 56px; }
+    .hero-frame {
+      background: var(--bg-1);
+      border: 1px solid var(--line-bright);
+      padding: 40px 36px;
+      box-shadow: 8px 8px 0 0 var(--bg-0), 9px 9px 0 0 #334155;
+      position: relative;
+    }
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .hero-wordmark { width: min(460px, 100%); height: auto; }
+    .cloud-pill {
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 6px 12px;
+      border: 1px solid var(--emerald);
+      color: #6EE7B7;
+      background: var(--emerald-dim);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-h1 {
+      font-size: clamp(32px, 4.4vw, 54px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      margin-bottom: 18px;
+      max-width: 900px;
+    }
+    .hero-lead {
+      font-size: 17px;
+      color: var(--ink-1);
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+    .ticker-bar {
+      margin-top: 32px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-2);
+    }
+    .ticker-chip {
+      padding: 5px 10px;
+      background: var(--bg-0);
+      border: 1px solid var(--line);
+    }
+
+    /* Calculator */
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+    .slider-group { margin-bottom: 22px; }
+    .slider-head {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--emerald);
+      cursor: pointer;
+    }
+    select {
+      width: 100%;
+      background: var(--bg-0);
+      border: 1px solid var(--line-bright);
+      color: var(--ink-0);
+      padding: 10px 12px;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    .calc-output {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(16,185,129,0.06), rgba(13,17,23,1));
+    }
+    .big-num {
+      font-family: var(--mono);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--emerald);
+      line-height: 1.1;
+    }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    /* Rails Explorer */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .filter-btn {
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      background: var(--bg-1);
+      color: var(--ink-2);
+      cursor: pointer;
+    }
+    .filter-btn.active {
+      background: var(--ink-0);
+      color: var(--bg-0);
+      border-color: var(--ink-0);
+      font-weight: 700;
+    }
+    .rails-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .rail-card { padding: 20px; }
+    .rail-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .rail-code {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 2px 8px;
+      border: 1px solid var(--line-bright);
+      color: var(--ink-1);
+      background: var(--bg-0);
+    }
+
+    /* Guardrails */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .guard-card { padding: 22px; }
+    .guard-card h3 { font-size: 17px; margin-bottom: 8px; }
+    .guard-card p { font-size: 14px; color: var(--ink-2); }
+    .guard-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #C4B5FD;
+      background: var(--violet-dim);
+      border: 1px solid rgba(139,92,246,0.45);
+      padding: 2px 8px;
+      margin-bottom: 10px;
+    }
+
+    /* Pricing */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .price-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .price-card.featured {
+      border-color: var(--emerald);
+      box-shadow: 6px 6px 0 0 var(--bg-0), 7px 7px 0 0 var(--emerald);
+    }
+    .price-val {
+      font-family: var(--mono);
+      font-size: 34px;
+      font-weight: 800;
+      margin: 12px 0 6px;
+    }
+    .price-list {
+      list-style: none;
+      margin: 18px 0 26px;
+      font-size: 14px;
+      color: var(--ink-1);
+    }
+    .price-list li {
+      padding: 7px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .price-list li::before {
+      content: '✓ ';
+      color: var(--emerald);
+      font-family: var(--mono);
+      font-weight: 700;
+    }
+
+    /* Deploy Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 10, 16, 0.82);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 20px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-box {
+      max-width: 560px;
+      width: 100%;
+      padding: 28px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: var(--bg-1);
+      padding: 48px 0;
+      margin-top: 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 32px;
+      font-size: 13px;
+      color: var(--ink-2);
+    }
+    .footer-grid h4 {
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-0);
+      margin-bottom: 12px;
+    }
+    .footer-grid a { display: block; margin-bottom: 8px; }
+    .footer-grid a:hover { color: var(--ink-0); }
+
+    @media (max-width: 960px) {
+      .calc-grid, .rails-grid, .grid-3, .pricing-grid, .footer-grid { grid-template-columns: 1fr; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <a href="#" class="brand-lockup">
+        <img src="/brand/logo-mark.svg" alt="Vectoll" width="32" height="32" />
+        <span style="font-family:var(--mono);font-weight:800;letter-spacing:0.12em;font-size:16px;">VECTOLL</span>
+        <span class="brand-tag">.com // Managed Cloud</span>
+      </a>
+      <nav>
+        <a href="#calculator">Revenue Calculator</a>
+        <a href="#rails">Global 9-Rail Map</a>
+        <a href="#enterprise">Enterprise Guardrails</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-sm" href="https://vectoll.org" target="_blank" rel="noopener">Open Protocol (.org)</a>
+        <button class="btn btn-sm btn-primary" onclick="openDeployModal()">Start Free Sandbox</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-frame">
+          <div class="hero-top">
+            <img src="/brand/logo-wordmark-dark.svg" alt="VECTOLL" class="hero-wordmark" />
+            <span class="cloud-pill">● GLOBAL TREASURY ACTIVE &bull; 99.99% SLA</span>
+          </div>
+          <h1 class="hero-h1">Turn AI Agent Traffic into Instant Global Revenue.</h1>
+          <p class="hero-lead">
+            AI scrapers, RAG pipelines, and autonomous MCP clients consume your APIs and content without viewing ads or completing checkouts. <strong>Vectoll Cloud</strong> lets you keep your site 100% free for human browsers while settling AI agent requests across <strong>Stripe, x402 USDC, SEPA, FedNow, PIX, UPI, PayNow, M-Pesa, and MTN MoMo</strong>—with zero treasury ops.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;">
+            <button class="btn btn-primary" onclick="openDeployModal()">Get Cloud API Key (vk_live_*)</button>
+            <a href="#calculator" class="btn">Calculate Agent Revenue</a>
+            <a href="https://vectoll.org" target="_blank" rel="noopener" class="btn">Read Open Protocol Specs &rarr;</a>
+          </div>
+
+          <div class="ticker-bar">
+            <span class="ticker-chip">USD &bull; Stripe / FedNow</span>
+            <span class="ticker-chip">USDC &bull; Base x402 V2</span>
+            <span class="ticker-chip">EUR &bull; SEPA Instant</span>
+            <span class="ticker-chip">BRL &bull; PIX Instant</span>
+            <span class="ticker-chip">INR &bull; UPI Instant</span>
+            <span class="ticker-chip">SGD &bull; PayNow / FPS</span>
+            <span class="ticker-chip">KES &bull; M-Pesa Daraja</span>
+            <span class="ticker-chip">UGX &bull; MTN MoMo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE REVENUE & ROI CALCULATOR -->
+    <section id="calculator">
+      <div class="container">
+        <div class="section-kicker">// 01. AI MONETIZATION ROI CALCULATOR</div>
+        <h2 class="section-title">Estimate Your AI Agent Revenue</h2>
+        <p class="section-sub">
+          Model how much revenue your APIs, documentation, newsroom, or MCP tools generate when autonomous agents pay per call—while human visitors continue browsing for free.
+        </p>
+
+        <div class="calc-grid">
+          <div class="wire-card" style="padding:28px;">
+            <div class="slider-group">
+              <div class="slider-head">
+                <span>Monthly AI Agent / MCP Requests</span>
+                <strong id="lblRequests" style="color:var(--emerald);">5,000,000</strong>
+              </div>
+              <input type="range" id="inRequests" min="100000" max="50000000" step="100000" value="5000000" oninput="updateCalc()" />
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-head">
+                <span>Price per Agent Request (USD equiv.)</span>
+                <strong id="lblPrice" style="color:var(--cobalt);">$0.005</strong>
+              </div>
+              <input type="range" id="inPrice" min="0.0005" max="0.10" step="0.0005" value="0.005" oninput="updateCalc()" />
+            </div>
+
+            <div class="slider-group" style="margin-bottom:0;">
+              <div class="slider-head"><span>Merchant Payout Currency</span></div>
+              <select id="inCurrency" onchange="updateCalc()">
+                <option value="USD|$|1">USD — US Dollar (Stripe / FedNow / ACH)</option>
+                <option value="EUR|€|0.92">EUR — Euro (SEPA Instant)</option>
+                <option value="GBP|£|0.79">GBP — British Pound (Faster Payments)</option>
+                <option value="USDC|USDC |1">USDC — Base On-Chain Instant Sweep</option>
+                <option value="INR|₹|84.2">INR — Indian Rupee (UPI)</option>
+                <option value="BRL|R$|5.75">BRL — Brazilian Real (PIX)</option>
+                <option value="KES|KES |129">KES — Kenyan Shilling (M-Pesa)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="wire-card calc-output">
+            <div>
+              <div style="font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:0.1em;">PROJECTED MONTHLY NET PAYOUT</div>
+              <div class="big-num" id="outMonthlyNet">$24,625</div>
+              <div style="font-size:13px;color:var(--ink-2);margin-top:4px;">Settled via batched double-entry ledger (zero per-call card minimums)</div>
+            </div>
+
+            <div style="margin:20px 0;">
+              <div class="stat-row"><span>Monthly Gross Agent Volume</span><strong id="outGross">$25,000</strong></div>
+              <div class="stat-row"><span>Vectoll Cloud Fee (1.5% Managed)</span><strong id="outFee" style="color:var(--ink-2);">-$375</strong></div>
+              <div class="stat-row"><span>Projected Annual Net Revenue</span><strong id="outAnnual" style="color:var(--emerald);">$295,500</strong></div>
+              <div class="stat-row" style="border:none;"><span>Traditional $0.30 Card Rail Feasibility</span><strong style="color:#FDA4AF;">Impossible (6000% fee)</strong></div>
+            </div>
+
+            <button class="btn btn-primary" style="width:100%;" onclick="openDeployModal()">Start Capturing This Revenue &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GLOBAL 9-RAIL TREASURY COVERAGE -->
+    <section id="rails" style="border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:rgba(13,17,23,0.6);">
+      <div class="container">
+        <div class="section-kicker">// 02. GLOBAL MULTI-RAIL COVERAGE</div>
+        <h2 class="section-title">One Integration. Nine Global Settlement Rails.</h2>
+        <p class="section-sub">
+          Filter by region. Agents pay on whichever rail they hold liquidity in; Vectoll Cloud reconciles every micro-transaction into a single integer ledger and sweeps payouts to your bank or wallet.
+        </p>
+
+        <div class="filter-bar" id="railFilters">
+          <button class="filter-btn active" data-region="all">All 9 Rails</button>
+          <button class="filter-btn" data-region="global">Global &amp; Web3</button>
+          <button class="filter-btn" data-region="na-eu">North America &amp; Europe</button>
+          <button class="filter-btn" data-region="apac-latam">APAC &amp; LATAM</button>
+          <button class="filter-btn" data-region="africa">Africa</button>
+        </div>
+
+        <div class="rails-grid" id="railsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ENTERPRISE GUARDRAILS -->
+    <section id="enterprise">
+      <div class="container">
+        <div class="section-kicker">// 03. ENTERPRISE SECURITY &amp; GOVERNANCE</div>
+        <h2 class="section-title">Built for CFOs, Security Teams, and High-Scale APIs</h2>
+        <p class="section-sub">
+          Autonomous software spending real money requires cryptographic proof, deterministic accounting, and hardware-backed human oversight.
+        </p>
+
+        <div class="grid-3">
+          <div class="wire-card guard-card">
+            <span class="guard-tag">WEBAUTHN P-256 (VSM1P)</span>
+            <h3>Hardware Passkey Mandates</h3>
+            <p>Bind AI agent spend caps to Touch ID, Face ID, or YubiKey signatures. Cryptographically enforce per-call, daily, and merchant-scoped limits.</p>
+          </div>
+          <div class="wire-card guard-card">
+            <span class="guard-tag">ESCROW + HITL</span>
+            <h3>Human-in-the-Loop Approvals</h3>
+            <p>Pause high-value agent bookings or purchases above your threshold for instant one-click approval, with automatic escrow refund on upstream failure.</p>
+          </div>
+          <div class="wire-card guard-card">
+            <span class="guard-tag">MULTI-TENANT ISOLATION</span>
+            <h3>Scoped <code>vk_live_*</code> API Keys</h3>
+            <p>Provision isolated workspaces, merchant payout accounts, and per-tenant rate policies with SHA-256 hashed API keys and live Console RBAC.</p>
+          </div>
+          <div class="wire-card guard-card">
+            <span class="guard-tag">RFC-0004 FEDERATION</span>
+            <h3>Zero-Lock-In Peering</h3>
+            <p>Accept payments from agents funded on any federated Vectoll facilitator using signed <code>vfv1</code> peering vouchers with automated net settlement.</p>
+          </div>
+          <div class="wire-card guard-card">
+            <span class="guard-tag">PROMETHEUS + O11Y</span>
+            <h3>Real-Time Edge Telemetry</h3>
+            <p>Scrape <code>/metrics</code> directly into Grafana or Datadog to track 402 conversion rates, rail latency histograms, and replay attack blocks.</p>
+          </div>
+          <div class="wire-card guard-card">
+            <span class="guard-tag">DOUBLE-ENTRY LEDGER</span>
+            <h3>Zero-Drift ERP Reconciliation</h3>
+            <p>Every micro-payment posts balanced integer minor-unit debits and credits to PostgreSQL with one-click CSV/NetSuite/QuickBooks audit exports.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" style="border-top:1px solid var(--line); background:rgba(13,17,23,0.6);">
+      <div class="container">
+        <div class="section-kicker">// 04. TRANSPARENT PRICING</div>
+        <h2 class="section-title">Start Free. Scale to Billions of Agent Calls.</h2>
+        <p class="section-sub">
+          The core Vectoll protocol, Gate, Facilitator, and SDKs are Apache 2.0 open source forever. Upgrade to Vectoll Cloud when you want managed multi-rail treasury and global payouts.
+        </p>
+
+        <div class="pricing-grid">
+          <div class="wire-card price-card">
+            <div>
+              <div style="font-family:var(--mono);font-size:12px;color:var(--ink-2);">SELF-HOSTED OSS</div>
+              <div class="price-val">$0 <span style="font-size:14px;color:var(--ink-2);font-weight:400;">/ forever</span></div>
+              <p style="font-size:14px;color:var(--ink-2);">Run the full Apache 2.0 stack on your own infrastructure with your own rail keys.</p>
+              <ul class="price-list">
+                <li>Unlimited metered API &amp; MCP requests</li>
+                <li>Go Edge Gate + Node/Python middleware</li>
+                <li>SQLite or PostgreSQL + Redis replay guard</li>
+                <li>All 9 open-source rail adapters</li>
+                <li>WebAuthn Passkeys &amp; Prometheus metrics</li>
+              </ul>
+            </div>
+            <a class="btn" href="https://vectoll.org" target="_blank" rel="noopener">Self-Host via vectoll.org</a>
+          </div>
+
+          <div class="wire-card price-card featured">
+            <div>
+              <div style="font-family:var(--mono);font-size:12px;color:var(--emerald);">VECTOLL CLOUD GROWTH</div>
+              <div class="price-val">1.5% <span style="font-size:14px;color:var(--ink-2);font-weight:400;">/ settled volume</span></div>
+              <p style="font-size:14px;color:var(--ink-2);">Zero monthly minimums. Instant multi-rail settlement &amp; managed treasury across 23 currencies.</p>
+              <ul class="price-list">
+                <li>Managed global Facilitator &amp; Edge CDN</li>
+                <li>Instant Stripe, USDC, SEPA, PIX, UPI &amp; MoMo</li>
+                <li>Automated FX conversion &amp; local bank sweeps</li>
+                <li>Hosted HITL Console &amp; Passkey mandate vault</li>
+                <li>No per-call fixed fee (micro-payments down to $0.0001)</li>
+              </ul>
+            </div>
+            <button class="btn btn-primary" onclick="openDeployModal()">Start Free Cloud Sandbox</button>
+          </div>
+
+          <div class="wire-card price-card">
+            <div>
+              <div style="font-family:var(--mono);font-size:12px;color:var(--cobalt);">ENTERPRISE TREASURY</div>
+              <div class="price-val">Custom</div>
+              <p style="font-size:14px;color:var(--ink-2);">For publishers, AI labs, financial APIs, and marketplaces processing high agent volume.</p>
+              <ul class="price-list">
+                <li>Dedicated single-tenant Facilitator cluster</li>
+                <li>Custom volume pricing &amp; bilateral federation</li>
+                <li>SOC2 / PCI / ISO 20022 compliance pack</li>
+                <li>Custom ERP webhooks &amp; SLA up to 99.995%</li>
+                <li>24/7 dedicated protocol engineering support</li>
+              </ul>
+            </div>
+            <button class="btn" onclick="openDeployModal()">Contact Enterprise Sales</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Quick Deploy Modal -->
+  <div class="modal-backdrop" id="deployModal" onclick="if(event.target===this)closeDeployModal()">
+    <div class="wire-card modal-box">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <span style="font-family:var(--mono);font-size:12px;color:var(--emerald);letter-spacing:0.1em;">VECTOLL CLOUD SANDBOX</span>
+        <button class="btn btn-sm" onclick="closeDeployModal()">×</button>
+      </div>
+      <h3 style="font-size:22px;margin-bottom:10px;">Deploy in 60 Seconds</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin-bottom:16px;">
+        Connect your API or MCP server to Vectoll Cloud—or launch a local sandbox immediately using the CLI:
+      </p>
+      <div style="background:var(--bg-0);border:1px solid var(--line-bright);padding:14px;font-family:var(--mono);font-size:12px;margin-bottom:18px;color:#E2E8F0;">
+        npx @vectoll/cli init<br/>
+        npx @vectoll/cli proxy --config vectoll.yaml<br/>
+        npx @vectoll/cli check https://your-api.com --strict
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;">
+        <a class="btn btn-sm" href="https://vectoll.org" target="_blank" rel="noopener">Open Docs (.org)</a>
+        <a class="btn btn-sm btn-primary" href="https://github.com/vectoll/vectoll" target="_blank" rel="noopener">Open GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="/brand/logo-wordmark-dark.svg" alt="VECTOLL" style="height:26px;margin-bottom:12px;" />
+          <p style="max-width:300px;">Managed global multi-rail settlement and enterprise guardrails for the Agentic Web.</p>
+        </div>
+        <div>
+          <h4>Vectoll Cloud (.com)</h4>
+          <a href="#calculator">Revenue Calculator</a>
+          <a href="#rails">9-Rail Coverage</a>
+          <a href="#enterprise">Enterprise Security</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        <div>
+          <h4>Open Protocol</h4>
+          <a href="https://vectoll.org" target="_blank" rel="noopener">vectoll.org Specification</a>
+          <a href="https://github.com/vectoll/vectoll" target="_blank" rel="noopener">GitHub (Apache 2.0)</a>
+          <a href="/brand/BRAND_GUIDELINES.md">Brand Kit</a>
+        </div>
+        <div>
+          <h4>Status &amp; Trust</h4>
+          <a href="#enterprise">Double-Entry Audit</a>
+          <a href="#enterprise">WebAuthn Passkeys</a>
+          <a href="#enterprise">RFC-0004 Federation</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 1. Revenue Calculator
+    function fmtNum(val, sym) {
+      return sym + Math.round(val).toLocaleString('en-US');
+    }
+    function updateCalc() {
+      const reqs = Number(document.getElementById('inRequests').value);
+      const priceUsd = Number(document.getElementById('inPrice').value);
+      const [code, sym, rateStr] = document.getElementById('inCurrency').value.split('|');
+      const rate = Number(rateStr);
+
+      document.getElementById('lblRequests').textContent = reqs.toLocaleString('en-US');
+      document.getElementById('lblPrice').textContent = '$' + priceUsd.toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
+
+      const gross = reqs * priceUsd * rate;
+      const fee = gross * 0.015;
+      const net = gross - fee;
+
+      document.getElementById('outMonthlyNet').textContent = fmtNum(net, sym);
+      document.getElementById('outGross').textContent = fmtNum(gross, sym);
+      document.getElementById('outFee').textContent = '-' + fmtNum(fee, sym);
+      document.getElementById('outAnnual').textContent = fmtNum(net * 12, sym);
+    }
+    updateCalc();
+
+    // 2. Global 9-Rail Explorer
+    const RAILS = [
+      { id: 'stripe', name: 'Stripe Cards & Wallets', region: 'global', currencies: 'USD, EUR, GBP, 135+ fiat', speed: 'Instant Auth', desc: 'Global PaymentIntents & batched agent wallet top-ups with zero micro-transaction card minimums.' },
+      { id: 'x402_usdc', name: 'x402 Base USDC', region: 'global', currencies: 'USDC (Base / EVM)', speed: '~2s Finality', desc: 'Native x402 V2 EIP-3009 on-chain USDC settlement with RPC receipt verification and zero chargebacks.' },
+      { id: 'voucher', name: 'Enterprise Vouchers', region: 'global', currencies: 'Any 23 Currencies', speed: '<1ms Offline', desc: 'Pre-funded B2B enterprise credits and signed Ed25519 vcv1 vouchers for zero-latency internal or partner APIs.' },
+      { id: 'sepa_instant', name: 'SEPA Instant', region: 'na-eu', currencies: 'EUR (36 Countries)', speed: '<10s ISO 20022', desc: 'Instant Eurozone bank-to-bank settlement using ISO 20022 pain.001 / pacs.008 standards.' },
+      { id: 'fednow_ach', name: 'FedNow & ACH', region: 'na-eu', currencies: 'USD (United States)', speed: 'Instant / Same-Day', desc: 'Real-time US interbank settlement via FedNow Service and low-cost ACH treasury sweeps.' },
+      { id: 'pix', name: 'PIX Instant', region: 'apac-latam', currencies: 'BRL (Brazil)', speed: '<3s 24/7', desc: 'Banco Central do Brasil instant QR & key settlement with automatic integer centavo reconciliation.' },
+      { id: 'upi', name: 'UPI Instant', region: 'apac-latam', currencies: 'INR (India)', speed: '<3s NPCI', desc: 'Unified Payments Interface real-time settlement for India’s developer and AI ecosystem.' },
+      { id: 'paynow', name: 'PayNow / FPS', region: 'apac-latam', currencies: 'SGD, HKD (APAC)', speed: '<5s Instant', desc: 'Instant APAC bank-rail settlement across Singapore PayNow and Hong Kong Faster Payment System.' },
+      { id: 'mpesa', name: 'M-Pesa & MTN MoMo', region: 'africa', currencies: 'KES, UGX, GHS, ZAR', speed: 'Real-Time STK', desc: 'Live Safaricom Daraja STK Push & MTN MoMo Collection APIs for mobile-first African markets.' },
+    ];
+
+    function renderRails(region) {
+      const grid = document.getElementById('railsGrid');
+      const items = region === 'all' ? RAILS : RAILS.filter(r => r.region === region);
+      grid.innerHTML = items.map(r => `
+        <div class="wire-card rail-card">
+          <div class="rail-top">
+            <strong style="font-size:16px;">${r.name}</strong>
+            <span class="rail-code">${r.id}</span>
+          </div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--emerald);margin-bottom:8px;">
+            ${r.currencies} &bull; ${r.speed}
+          </div>
+          <p style="font-size:13px;color:var(--ink-2);">${r.desc}</p>
+        </div>
+      `).join('');
+    }
+    document.querySelectorAll('#railFilters .filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#railFilters .filter-btn').forEach(b => b.classList.toggle('active', b === btn));
+        renderRails(btn.dataset.region);
+      });
+    });
+    renderRails('all');
+
+    // 3. Deploy Modal
+    function openDeployModal() { document.getElementById('deployModal').classList.add('open'); }
+    function closeDeployModal() { document.getElementById('deployModal').classList.remove('open'); }
+  </script>
+</body>
+</html>
