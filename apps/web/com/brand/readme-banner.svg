@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" fill="none" role="img" aria-label="Vectoll — Global Metering, Verification & Multi-Rail Settlement for the Agentic Web">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1280" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#070A10"/>
+      <stop offset="55%" stop-color="#0D1117"/>
+      <stop offset="100%" stop-color="#09131F"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1E293B" stroke-width="0.7" opacity="0.55"/>
+    </pattern>
+    <radialGradient id="glow" cx="50%" cy="40%" r="48%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="360" rx="18" fill="url(#bgGrad)"/>
+  <rect width="1280" height="360" rx="18" fill="url(#grid)"/>
+  <rect width="1280" height="360" rx="18" fill="url(#glow)"/>
+  <rect x="1" y="1" width="1278" height="358" rx="17" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Top telemetry bar -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#94A3B8">
+    <circle cx="44" cy="36" r="4.5" fill="#10B981"/>
+    <text x="58" y="40" letter-spacing="1.4">PROTOCOL v1.0 · HTTP 402 · x402 V2 · MCP JSON-RPC 2.0</text>
+    <text x="1236" y="40" text-anchor="end" fill="#64748B">vectoll.org  ·  vectoll.com</text>
+  </g>
+
+  <!-- Centered extruded double-line VECTOLL block wordmark -->
+  <g transform="translate(268, 92)">
+    <!-- Wireframe shadow (+9, +9) -->
+    <g stroke="#64748B" stroke-width="2.2" fill="none" stroke-linejoin="miter">
+      <polygon points="9,9 33,9 33,67 51,67 51,85 69,85 69,67 87,67 87,9 111,9 111,71 91,71 91,91 71,91 71,107 49,107 49,91 29,91 29,71 9,71"/>
+      <polygon points="131,9 217,9 217,31 155,31 155,47 205,47 205,69 155,69 155,85 217,85 217,107 131,107"/>
+      <polygon points="237,9 325,9 325,31 261,31 261,85 325,85 325,107 237,107"/>
+      <polygon points="345,9 441,9 441,31 405,31 405,107 381,107 381,31 345,31"/>
+      <path d="M461,9 H551 V107 H461 Z M485,31 V85 H527 V31 Z" fill-rule="evenodd"/>
+      <polygon points="571,9 595,9 595,85 647,85 647,107 571,107"/>
+      <polygon points="667,9 691,9 691,85 743,85 743,107 667,107"/>
+    </g>
+    <!-- Foreground crisp white blocks -->
+    <g fill="#F8FAFC">
+      <polygon points="0,0 24,0 24,58 42,58 42,76 60,76 60,58 78,58 78,0 102,0 102,62 82,62 82,82 62,82 62,98 40,98 40,82 20,82 20,62 0,62"/>
+      <polygon points="122,0 208,0 208,22 146,22 146,38 196,38 196,60 146,60 146,76 208,76 208,98 122,98"/>
+      <polygon points="228,0 316,0 316,22 252,22 252,76 316,76 316,98 228,98"/>
+      <polygon points="336,0 432,0 432,22 396,22 396,98 372,98 372,22 336,22"/>
+      <path d="M452,0 H542 V98 H452 Z M476,22 V76 H518 V22 Z" fill-rule="evenodd"/>
+      <polygon points="562,0 586,0 586,76 638,76 638,98 562,98"/>
+      <polygon points="658,0 682,0 682,76 734,76 734,98 658,98"/>
+    </g>
+    <rect x="748" y="84" width="14" height="14" fill="#10B981"/>
+  </g>
+
+  <!-- Subtitle -->
+  <text x="640" y="246" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="600" fill="#E2E8F0">
+    Add AI Agent Metering &amp; Global Multi-Rail Payments to Any API, Website, or MCP Server in 3 Lines
+  </text>
+
+  <!-- Bottom capability pills -->
+  <g transform="translate(216, 282)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">
+    <rect x="0" y="0" width="170" height="30" rx="5" fill="#111827" stroke="#1E293B"/>
+    <text x="85" y="19" text-anchor="middle" fill="#10B981">&lt; 0.3ms ED25519 VERIFY</text>
+
+    <rect x="184" y="0" width="184" height="30" rx="5" fill="#111827" stroke="#1E293B"/>
+    <text x="276" y="19" text-anchor="middle" fill="#38BDF8">9 GLOBAL RAILS · 23 FX</text>
+
+    <rect x="382" y="0" width="210" height="30" rx="5" fill="#111827" stroke="#1E293B"/>
+    <text x="487" y="19" text-anchor="middle" fill="#C4B5FD">EXPRESS · NEXT.JS · FASTAPI</text>
+
+    <rect x="606" y="0" width="242" height="30" rx="5" fill="#111827" stroke="#1E293B"/>
+    <text x="727" y="19" text-anchor="middle" fill="#F8FAFC">FREE FOR HUMAN BROWSERS</text>
+  </g>
+</svg>

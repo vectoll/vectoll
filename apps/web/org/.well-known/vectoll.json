@@ -1,0 +1,40 @@
+{
+  "vectollVersion": "1.0",
+  "x402Version": 2,
+  "service": {
+    "name": "vectoll.org",
+    "description": "Vectoll Open Protocol Specification, WebCrypto Studio & RFC Hub",
+    "mcpEndpoint": "/mcp"
+  },
+  "settlement": {
+    "facilitatorUrl": "https://pay.vectoll.com",
+    "jwksUrl": "https://pay.vectoll.com/.well-known/jwks.json",
+    "facilitatorPublicKey": "did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
+    "facilitatorKid": "fac-ed25519-global-1",
+    "defaultCurrency": "USD",
+    "defaultDecimals": 4,
+    "acceptedRails": [
+      "stripe",
+      "x402_usdc",
+      "sepa_instant",
+      "fednow_ach",
+      "pix",
+      "upi",
+      "paynow",
+      "mpesa",
+      "momo"
+    ]
+  },
+  "routes": [
+    {
+      "path": "/api/v1/signals",
+      "method": "GET",
+      "pricingMode": "fixed",
+      "amount": 50,
+      "currency": "USD",
+      "decimals": 4,
+      "settlementMode": "instant",
+      "humanPassthrough": true
+    }
+  ]
+}

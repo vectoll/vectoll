@@ -20,14 +20,86 @@ const MIME = {
   '.md': 'text/markdown; charset=utf-8',
 };
 
+function buildDiscoveryManifest(siteName) {
+  return {
+    vectollVersion: '1.0',
+    x402Version: 2,
+    service: {
+      name: siteName,
+      description:
+        siteName === 'vectoll.org'
+          ? 'Vectoll Open Protocol Specification, WebCrypto Studio & RFC Hub'
+          : 'Vectoll Cloud Managed Multi-Rail AI Agent Settlement Platform',
+      mcpEndpoint: '/mcp',
+    },
+    settlement: {
+      facilitatorUrl: 'https://pay.vectoll.com',
+      jwksUrl: 'https://pay.vectoll.com/.well-known/jwks.json',
+      facilitatorPublicKey: 'did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK',
+      facilitatorKid: 'fac-ed25519-global-1',
+      defaultCurrency: 'USD',
+      defaultDecimals: 4,
+      acceptedRails: [
+        'stripe',
+        'x402_usdc',
+        'sepa_instant',
+        'fednow_ach',
+        'pix',
+        'upi',
+        'paynow',
+        'mpesa',
+        'momo',
+      ],
+    },
+    routes: [
+      {
+        path: '/api/v1/signals',
+        method: 'GET',
+        pricingMode: 'fixed',
+        amount: 50,
+        currency: 'USD',
+        decimals: 4,
+        settlementMode: 'instant',
+        humanPassthrough: true,
+        mcpTool: {
+          name: 'get_protocol_signals',
+          description: 'Query live multi-rail settlement telemetry',
+        },
+      },
+    ],
+  };
+}
+
 function createSiteServer(siteDir, siteName) {
+  let requestsTotal = 0;
+
   return http.createServer((req, res) => {
+    requestsTotal++;
     const reqUrl = new URL(req.url || '/', 'http://127.0.0.1');
     const pathname = decodeURIComponent(reqUrl.pathname);
 
     if (pathname === '/health') {
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ ok: true, site: siteName }));
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ ok: true, site: siteName, version: '1.0.0' }));
+      return;
+    }
+
+    if (pathname === '/.well-known/vectoll.json') {
+      res.writeHead(200, {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*',
+      });
+      res.end(JSON.stringify(buildDiscoveryManifest(siteName), null, 2));
+      return;
+    }
+
+    if (pathname === '/metrics') {
+      res.writeHead(200, { 'Content-Type': 'text/plain; version=0.0.4; charset=utf-8' });
+      res.end(
+        `# HELP vectoll_web_requests_total Total HTTP requests served by ${siteName}\n` +
+          `# TYPE vectoll_web_requests_total counter\n` +
+          `vectoll_web_requests_total{site="${siteName}"} ${requestsTotal}\n`,
+      );
       return;
     }
 
@@ -64,10 +136,10 @@ const orgServer = createSiteServer(ORG_DIR, 'vectoll.org');
 const comServer = createSiteServer(COM_DIR, 'vectoll.com');
 
 orgServer.listen(ORG_PORT, HOST, () => {
-  console.log(`[vectoll.org] Open Protocol site  -> http://${HOST}:${ORG_PORT}`);
+  console.log(`[vectoll.org] Open Protocol & WebCrypto Studio -> http://${HOST}:${ORG_PORT}`);
 });
 comServer.listen(COM_PORT, HOST, () => {
-  console.log(`[vectoll.com] Vectoll Cloud site  -> http://${HOST}:${COM_PORT}`);
+  console.log(`[vectoll.com] Vectoll Cloud & Live Console     -> http://${HOST}:${COM_PORT}`);
 });
 
 function shutdown() {

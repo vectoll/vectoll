@@ -3,1341 +3,523 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vectoll — Open Protocol for AI Agent Metering, HTTP 402 &amp; Global Multi-Rail Settlement</title>
-  <meta name="description" content="Keep your website 100% free for human browsers while metering autonomous AI agents and MCP clients per request across Stripe, USDC (x402), SEPA, FedNow, PIX, UPI, PayNow, M-Pesa, and MTN MoMo." />
-  <meta property="og:title" content="Vectoll — Open Protocol for AI Agent Metering &amp; Global Settlement" />
-  <meta property="og:description" content="Add AI agent metering &amp; global payments to any API, website, or MCP server in 3 lines. Apache 2.0." />
+  <title>Vectoll.org — Open Protocol, Real WebCrypto Studio &amp; RFC Hub for AI Agent Payments</title>
+  <meta name="description" content="The Apache 2.0 open protocol for AI agent metering, HTTP 402 / x402 V2 verification, MCP tool payments, and 9-rail global settlement. Includes a live browser Ed25519 WebCrypto Studio, Token Inspector, and Full-Stack Config Architect." />
+  <meta property="og:title" content="Vectoll.org — Open Protocol &amp; WebCrypto Studio for the Agentic Web" />
+  <meta property="og:description" content="Keep your website 100% free for humans while metering AI agents across 9 global rails and 23 currencies." />
   <meta property="og:image" content="/brand/social-og-preview.svg" />
   <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg" />
-  <style>
-    :root {
-      --bg-0: #070A10;
-      --bg-1: #0D1117;
-      --bg-2: #121824;
-      --bg-3: #171F2E;
-      --line: #1E293B;
-      --line-bright: #334155;
-      --ink-0: #F8FAFC;
-      --ink-1: #CBD5E1;
-      --ink-2: #94A3B8;
-      --ink-3: #64748B;
-      --emerald: #10B981;
-      --emerald-dim: rgba(16, 185, 129, 0.14);
-      --cobalt: #3B82F6;
-      --cobalt-dim: rgba(59, 130, 246, 0.14);
-      --violet: #8B5CF6;
-      --violet-dim: rgba(139, 92, 246, 0.14);
-      --amber: #F59E0B;
-      --amber-dim: rgba(245, 158, 11, 0.14);
-      --rose: #F43F5E;
-      --rose-dim: rgba(244, 63, 94, 0.14);
-      --mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
-      --sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background-color: var(--bg-0);
-      color: var(--ink-0);
-      font-family: var(--sans);
-      line-height: 1.6;
-      overflow-x: hidden;
-      background-image:
-        linear-gradient(rgba(30, 41, 59, 0.28) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(30, 41, 59, 0.28) 1px, transparent 1px);
-      background-size: 40px 40px;
-      background-position: center top;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    code, pre { font-family: var(--mono); }
-
-    /* Extruded double-line card aesthetic inspired by README VECTOLL header */
-    .wire-card {
-      background: var(--bg-1);
-      border: 1px solid var(--line-bright);
-      position: relative;
-      box-shadow: 5px 5px 0 0 var(--bg-0), 6px 6px 0 0 #334155;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-    }
-    .wire-card:hover {
-      border-color: #64748B;
-    }
-    .wire-card-flat {
-      background: var(--bg-1);
-      border: 1px solid var(--line);
-    }
-
-    /* Header / Nav */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(7, 10, 16, 0.86);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand-lockup {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .brand-tag {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border: 1px solid var(--emerald);
-      color: var(--emerald);
-      background: var(--emerald-dim);
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      font-size: 13px;
-      color: var(--ink-1);
-    }
-    nav a:hover { color: var(--ink-0); }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 10px 18px;
-      border: 1px solid var(--line-bright);
-      background: var(--bg-2);
-      color: var(--ink-0);
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .btn:hover {
-      border-color: var(--ink-0);
-      transform: translate(-1px, -1px);
-      box-shadow: 3px 3px 0 0 #334155;
-    }
-    .btn-primary {
-      background: var(--ink-0);
-      color: var(--bg-0);
-      border-color: var(--ink-0);
-      box-shadow: 4px 4px 0 0 var(--bg-0), 5px 5px 0 0 #64748B;
-    }
-    .btn-primary:hover {
-      background: #FFFFFF;
-      transform: translate(-1px, -1px);
-      box-shadow: 5px 5px 0 0 var(--bg-0), 6px 6px 0 0 var(--emerald);
-    }
-    .btn-emerald {
-      background: var(--emerald-dim);
-      border-color: var(--emerald);
-      color: #6EE7B7;
-    }
-    .btn-sm { padding: 6px 12px; font-size: 12px; }
-
-    /* Sections */
-    .container {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    section { padding: 84px 0; }
-    .section-kicker {
-      font-family: var(--mono);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--emerald);
-      margin-bottom: 10px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .section-title {
-      font-size: clamp(28px, 3.6vw, 42px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin-bottom: 14px;
-    }
-    .section-sub {
-      color: var(--ink-2);
-      font-size: 16px;
-      max-width: 720px;
-      margin-bottom: 36px;
-    }
-
-    /* Hero */
-    .hero {
-      padding: 76px 0 64px;
-      position: relative;
-    }
-    .hero-banner-box {
-      background: #0D1117;
-      border: 1px solid var(--line-bright);
-      padding: 36px 32px 28px;
-      margin-bottom: 32px;
-      position: relative;
-      box-shadow: 8px 8px 0 0 var(--bg-0), 9px 9px 0 0 #334155;
-      overflow: hidden;
-    }
-    .hero-banner-box::before {
-      content: 'PROTOCOL // HTTP 402 + X402 V2 + MCP // APACHE 2.0';
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      color: var(--ink-3);
-    }
-    .hero-wordmark {
-      width: min(560px, 100%);
-      height: auto;
-      display: block;
-      margin: 8px 0 22px;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      gap: 32px;
-      align-items: start;
-    }
-    .hero-h1 {
-      font-size: clamp(28px, 3.8vw, 46px);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.12;
-      margin-bottom: 16px;
-    }
-    .hero-lead {
-      font-size: 16px;
-      color: var(--ink-1);
-      margin-bottom: 24px;
-      max-width: 620px;
-    }
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .badge {
-      font-family: var(--mono);
-      font-size: 11px;
-      padding: 4px 10px;
-      border: 1px solid var(--line-bright);
-      background: var(--bg-2);
-      color: var(--ink-1);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .badge.em { border-color: rgba(16,185,129,0.5); color: #6EE7B7; background: var(--emerald-dim); }
-    .badge.co { border-color: rgba(59,130,246,0.5); color: #93C5FD; background: var(--cobalt-dim); }
-    .badge.vi { border-color: rgba(139,92,246,0.5); color: #C4B5FD; background: var(--violet-dim); }
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 22px;
-    }
-    .install-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      background: var(--bg-0);
-      border: 1px solid var(--line-bright);
-      padding: 10px 14px;
-      font-family: var(--mono);
-      font-size: 13px;
-      color: #E2E8F0;
-      max-width: 480px;
-    }
-    .install-bar span.prompt { color: var(--emerald); margin-right: 8px; }
-
-    /* Telemetry Strip */
-    .telemetry-panel {
-      background: var(--bg-0);
-      border: 1px solid var(--line-bright);
-      padding: 20px;
-      font-family: var(--mono);
-      font-size: 12px;
-    }
-    .telemetry-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 12px;
-      margin-bottom: 14px;
-      border-bottom: 1px solid var(--line);
-      color: var(--ink-2);
-    }
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--emerald);
-      display: inline-block;
-      box-shadow: 0 0 10px var(--emerald);
-      animation: pulse 1.8s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.45; transform: scale(0.85); }
-    }
-    .packet-step {
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      background: var(--bg-1);
-      margin-bottom: 10px;
-      transition: border-color 0.25s, background 0.25s;
-    }
-    .packet-step.active {
-      border-color: var(--emerald);
-      background: rgba(16, 185, 129, 0.08);
-    }
-    .packet-step .step-top {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 4px;
-      font-weight: 700;
-    }
-    .kpi-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 28px;
-    }
-    .kpi-box {
-      background: var(--bg-1);
-      border: 1px solid var(--line);
-      padding: 16px 18px;
-    }
-    .kpi-val {
-      font-family: var(--mono);
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--ink-0);
-    }
-    .kpi-lbl {
-      font-size: 12px;
-      color: var(--ink-2);
-      margin-top: 2px;
-    }
-
-    /* Tabs & Code Switcher */
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
-    .tab-btn {
-      font-family: var(--mono);
-      font-size: 12px;
-      padding: 8px 14px;
-      border: 1px solid var(--line);
-      background: var(--bg-1);
-      color: var(--ink-2);
-      cursor: pointer;
-      transition: all 0.12s ease;
-    }
-    .tab-btn:hover { color: var(--ink-0); border-color: var(--line-bright); }
-    .tab-btn.active {
-      background: var(--ink-0);
-      color: var(--bg-0);
-      border-color: var(--ink-0);
-      font-weight: 700;
-    }
-    .code-shell {
-      background: #0A0E17;
-      border: 1px solid var(--line-bright);
-      box-shadow: 6px 6px 0 0 var(--bg-0), 7px 7px 0 0 #334155;
-      overflow: hidden;
-    }
-    .code-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 16px;
-      background: var(--bg-2);
-      border-bottom: 1px solid var(--line);
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--ink-2);
-    }
-    pre.code-body {
-      padding: 20px;
-      overflow-x: auto;
-      font-size: 13px;
-      line-height: 1.65;
-      color: #E2E8F0;
-    }
-
-    /* Simulator */
-    .sim-grid {
-      display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: 24px;
-    }
-    .sim-controls {
-      padding: 22px;
-    }
-    .field { margin-bottom: 16px; }
-    .field label {
-      display: block;
-      font-family: var(--mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--ink-2);
-      margin-bottom: 6px;
-    }
-    select, input[type="text"], input[type="number"] {
-      width: 100%;
-      background: var(--bg-0);
-      border: 1px solid var(--line-bright);
-      color: var(--ink-0);
-      padding: 9px 12px;
-      font-family: var(--mono);
-      font-size: 13px;
-      outline: none;
-    }
-    select:focus, input:focus { border-color: var(--emerald); }
-    .scenario-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .scenario-btn {
-      text-align: left;
-      padding: 9px 12px;
-      border: 1px solid var(--line);
-      background: var(--bg-0);
-      color: var(--ink-1);
-      font-family: var(--mono);
-      font-size: 12px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .scenario-btn.active {
-      border-color: var(--emerald);
-      background: var(--emerald-dim);
-      color: var(--ink-0);
-    }
-    .sim-stage {
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .trace-block {
-      background: var(--bg-0);
-      border: 1px solid var(--line);
-      padding: 14px 16px;
-      font-family: var(--mono);
-      font-size: 12px;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-    .trace-label {
-      font-family: var(--mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 6px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .ledger-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: var(--mono);
-      font-size: 12px;
-    }
-    .ledger-table th, .ledger-table td {
-      padding: 8px 10px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-    }
-    .ledger-table th { color: var(--ink-3); font-size: 11px; text-transform: uppercase; }
-
-    /* Config Builder */
-    .builder-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    .route-row {
-      display: grid;
-      grid-template-columns: 76px 1fr 94px 110px 32px;
-      gap: 8px;
-      margin-bottom: 8px;
-      align-items: center;
-    }
-    .toggle-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin: 14px 0;
-      font-size: 13px;
-      color: var(--ink-1);
-    }
-    .toggle-row label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
-
-    /* FX Matrix */
-    .fx-card {
-      padding: 24px;
-    }
-    .fx-controls {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-    .fx-result {
-      background: var(--bg-0);
-      border: 1px solid var(--emerald);
-      padding: 18px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      font-family: var(--mono);
-    }
-    .fx-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-      gap: 10px;
-      margin-top: 18px;
-    }
-    .fx-pill {
-      background: var(--bg-0);
-      border: 1px solid var(--line);
-      padding: 10px 12px;
-      font-family: var(--mono);
-      font-size: 12px;
-    }
-
-    /* RFC & Features Grid */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    .feature-card {
-      padding: 22px;
-    }
-    .feature-card h3 {
-      font-size: 17px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .feature-card p {
-      font-size: 14px;
-      color: var(--ink-2);
-    }
-    .rfc-tag {
-      font-family: var(--mono);
-      font-size: 11px;
-      padding: 2px 7px;
-      border: 1px solid var(--cobalt);
-      color: #93C5FD;
-      background: var(--cobalt-dim);
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      background: var(--bg-1);
-      padding: 48px 0;
-      margin-top: 40px;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 32px;
-      font-size: 13px;
-      color: var(--ink-2);
-    }
-    .footer-grid h4 {
-      font-family: var(--mono);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--ink-0);
-      margin-bottom: 12px;
-    }
-    .footer-grid a {
-      display: block;
-      margin-bottom: 8px;
-    }
-    .footer-grid a:hover { color: var(--ink-0); }
-
-    @media (max-width: 960px) {
-      .hero-grid, .sim-grid, .builder-grid, .grid-3, .grid-2, .footer-grid, .kpi-strip, .fx-controls {
-        grid-template-columns: 1fr;
-      }
-      nav { display: none; }
-      .route-row { grid-template-columns: 70px 1fr 80px 32px; }
-      .route-row .route-transform { display: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <header>
-    <div class="nav-inner">
-      <a href="#" class="brand-lockup">
-        <img src="/brand/logo-mark.svg" alt="Vectoll" width="32" height="32" />
-        <span style="font-family:var(--mono);font-weight:800;letter-spacing:0.12em;font-size:16px;">VECTOLL</span>
-        <span class="brand-tag">.org // Open Protocol</span>
-      </a>
-      <nav>
-        <a href="#integrate">3-Line Setup</a>
-        <a href="#simulator">402 Simulator</a>
-        <a href="#builder">Config Builder</a>
-        <a href="#fx">23-Currency FX</a>
-        <a href="#rfcs">RFCs</a>
+    <div class="topbar">
+      <div class="brand-lockup" onclick="switchView('overview')">
+        <img src="/brand/logo-mark.svg" alt="Vectoll" width="30" height="30" />
+        <span class="brand-name">VECTOLL</span>
+        <span class="domain-pill">.ORG</span>
+      </div>
+
+      <nav class="view-nav" aria-label="Workspace navigation">
+        <button class="view-tab active" data-view="overview">Overview</button>
+        <button class="view-tab" data-view="studio">Crypto Studio</button>
+        <button class="view-tab" data-view="inspector">Inspector</button>
+        <button class="view-tab" data-view="builder">Architect</button>
+        <button class="view-tab" data-view="docs">RFCs &amp; Docs</button>
+        <button class="view-tab" data-view="directory">Directory</button>
       </nav>
-      <div class="nav-actions">
-        <a class="btn btn-sm" href="https://vectoll.com" target="_blank" rel="noopener">Vectoll Cloud &rarr;</a>
-        <a class="btn btn-sm btn-primary" href="https://github.com/vectoll/vectoll" target="_blank" rel="noopener">GitHub</a>
+
+      <div class="header-actions">
+        <button class="cmd-trigger" onclick="openPalette()" title="Search tools &amp; RFCs">
+          <span>Search</span><kbd>⌘K</kbd>
+        </button>
+        <button class="btn btn-xs" id="themeBtn" onclick="toggleTheme()">☀ Light</button>
+        <a class="btn btn-xs btn-emerald" href="https://vectoll.com" target="_blank" rel="noopener">Cloud (.com) ↗</a>
+        <a class="btn btn-xs btn-primary" href="https://github.com/vectoll/vectoll" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-banner-box">
-          <img src="/brand/logo-wordmark-dark.svg" alt="VECTOLL" class="hero-wordmark" />
-          <div class="hero-grid">
-            <div>
-              <div class="badge-row">
-                <span class="badge em">v1.0.0 RELEASE</span>
-                <span class="badge co">HTTP 402 + x402 V2</span>
-                <span class="badge vi">MCP AUTO-WRAPPER</span>
-                <span class="badge">APACHE 2.0</span>
-              </div>
-              <h1 class="hero-h1">The Open Settlement Protocol for the Agentic Web.</h1>
-              <p class="hero-lead">
-                Keep your website <strong>100% free for human browsers</strong> while metering autonomous AI agents and MCP clients per request across <strong>9 global payment rails</strong> and <strong>23 currencies</strong>—with sub-millisecond Ed25519 receipts, WebAuthn Passkey mandates, and zero float drift.
-              </p>
-              <div class="cta-row">
-                <a href="#integrate" class="btn btn-primary">Integrate in 3 Lines</a>
-                <a href="#simulator" class="btn btn-emerald">Launch Live 402 Simulator</a>
-                <a href="https://vectoll.com" target="_blank" rel="noopener" class="btn">Explore Vectoll Cloud</a>
-              </div>
-              <div class="install-bar">
-                <div><span class="prompt">$</span><span id="installCmd">npm install @vectoll/server</span></div>
-                <button class="btn btn-sm" onclick="copyText(document.getElementById('installCmd').textContent, this)">Copy</button>
-              </div>
+  <main class="container">
+    <!-- ═══════════════════ VIEW 1: OVERVIEW ═══════════════════ -->
+    <div class="view-pane active" id="view-overview">
+      <div class="wire-card hero-box">
+        <div class="hero-meta">
+          <div style="display:flex;flex-wrap:wrap;gap:7px;">
+            <span class="badge em">RELEASE v1.0.0</span>
+            <span class="badge co">HTTP 402 + x402 V2</span>
+            <span class="badge vi">MCP NATIVE</span>
+            <span class="badge">APACHE 2.0</span>
+          </div>
+          <span style="font-family:var(--mono);font-size:11px;color:var(--ink-3);">9 RAILS &bull; 23 CURRENCIES &bull; 0 FLOAT DRIFT</span>
+        </div>
+
+        <div class="grid-2" style="align-items:center;">
+          <div>
+            <img id="heroWordmark" src="/brand/logo-wordmark-dark.svg" alt="VECTOLL" class="hero-wordmark" />
+            <h1 class="h1">Keep Humans Free. Meter AI Agents Globally in 3 Lines.</h1>
+            <p style="color:var(--ink-1);font-size:15.5px;margin-bottom:20px;">
+              Vectoll is the open cryptographic metering &amp; settlement protocol for APIs, publishers, and MCP servers. Verify Ed25519 <code>vrt1</code> receipts offline in <strong>&lt;0.3ms</strong> across <strong>Stripe, Base USDC, SEPA Instant, FedNow, PIX, UPI, PayNow, M-Pesa, and MTN MoMo</strong>.
+            </p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+              <button class="btn btn-primary" onclick="switchView('studio')">Launch Real Ed25519 Studio &rarr;</button>
+              <button class="btn btn-emerald" onclick="switchView('builder')">Generate Config &amp; Docker</button>
+              <button class="btn" onclick="switchView('inspector')">Inspect VRT1 Token</button>
             </div>
 
-            <!-- Live Animated Wire Telemetry -->
-            <div class="telemetry-panel">
-              <div class="telemetry-header">
-                <span><span class="pulse-dot"></span> LIVE PROTOCOL WIRE</span>
-                <span id="wireLatency" style="color:var(--emerald);">0.28 ms verify</span>
+            <div class="pkg-bar">
+              <div class="pkg-tabs">
+                <button class="pkg-tab active" data-pkg="npm">npm</button>
+                <button class="pkg-tab" data-pkg="pnpm">pnpm</button>
+                <button class="pkg-tab" data-pkg="pip">pip</button>
+                <button class="pkg-tab" data-pkg="go">go</button>
+                <button class="pkg-tab" data-pkg="cli">npx</button>
               </div>
-              <div class="packet-step active" id="pstep-0">
-                <div class="step-top">
-                  <span style="color:var(--amber);">1. AGENT &rarr; GATE</span>
-                  <span>GET /api/v1/forecast</span>
-                </div>
-                <div style="color:var(--ink-2);">Unauthenticated AI client &rarr; <code style="color:var(--amber);">402 Payment Required</code> + <code>PAYMENT-REQUIRED</code> (9 rails)</div>
-              </div>
-              <div class="packet-step" id="pstep-1">
-                <div class="step-top">
-                  <span style="color:var(--cobalt);">2. FACILITATOR &rarr; VRT1</span>
-                  <span>Ed25519 + Double-Entry</span>
-                </div>
-                <div style="color:var(--ink-2);">Settles <code>$0.005</code> on preferred rail &rarr; mints canonical <code>vrt1...</code> receipt bound to <code>reqHash</code></div>
-              </div>
-              <div class="packet-step" id="pstep-2">
-                <div class="step-top">
-                  <span style="color:var(--emerald);">3. GATE &rarr; 200 OK</span>
-                  <span>Offline Verify &bull; 0 RTT</span>
-                </div>
-                <div style="color:var(--ink-2);">Verifies <code>did:key</code> + Redis replay lock &rarr; forwards request &amp; emits <code>PAYMENT-RESPONSE</code></div>
-              </div>
+              <span class="pkg-cmd" id="pkgCmdText">npm install @vectoll/server @vectoll/sdk</span>
+              <button class="btn btn-xs" style="margin-right:6px;" onclick="copyText(document.getElementById('pkgCmdText').textContent, 'Install command copied')">Copy</button>
             </div>
           </div>
 
-          <div class="kpi-strip">
-            <div class="kpi-box">
-              <div class="kpi-val">&lt;0.3ms</div>
-              <div class="kpi-lbl">Offline Ed25519 Gate Verification</div>
+          <div class="wire-telemetry">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--line);">
+              <span><span class="pulse"></span> PROTOCOL WIRE LOOP</span>
+              <span style="color:var(--emerald);">Offline did:key Verify</span>
             </div>
-            <div class="kpi-box">
-              <div class="kpi-val">9 Rails</div>
-              <div class="kpi-lbl">Stripe, x402 USDC, SEPA, FedNow, PIX, UPI, PayNow, M-Pesa, MoMo</div>
+            <div class="p-step active" id="hstep-0">
+              <div style="display:flex;justify-content:space-between;font-weight:700;"><span style="color:var(--amber);">1. HTTP 402 CHALLENGE</span><span>0.12 ms</span></div>
+              <div style="color:var(--ink-2);margin-top:3px;">Unpaid bot hits <code>GET /api/signals</code> &rarr; Gate emits <code>PAYMENT-REQUIRED</code> + <code>reqHash</code></div>
             </div>
-            <div class="kpi-box">
-              <div class="kpi-val">23 Currencies</div>
-              <div class="kpi-lbl">Lossless Integer Minor-Unit FX (Zero Float Drift)</div>
+            <div class="p-step" id="hstep-1">
+              <div style="display:flex;justify-content:space-between;font-weight:700;"><span style="color:var(--cobalt);">2. MULTI-RAIL CLEARING</span><span>Double-Entry</span></div>
+              <div style="color:var(--ink-2);margin-top:3px;">Facilitator settles <code>$0.005</code> under Passkey Mandate (<code>vsm1p</code>) &amp; signs <code>vrt1</code></div>
             </div>
-            <div class="kpi-box">
-              <div class="kpi-val">3 Languages</div>
-              <div class="kpi-lbl">TypeScript SDK/Server, Go Edge Gate, Python ASGI SDK</div>
+            <div class="p-step" id="hstep-2">
+              <div style="display:flex;justify-content:space-between;font-weight:700;"><span style="color:var(--emerald);">3. 200 OK + MCP / JSON</span><span>0.24 ms</span></div>
+              <div style="color:var(--ink-2);margin-top:3px;">Gate verifies Ed25519 signature + Redis replay guard &rarr; returns clean structured output</div>
+            </div>
+
+            <div class="grid-4" style="margin-top:14px;gap:8px;">
+              <div class="wire-flat" style="padding:8px 10px;"><strong style="font-size:16px;">&lt;0.3ms</strong><div style="font-size:10px;color:var(--ink-3);">Gate Verify</div></div>
+              <div class="wire-flat" style="padding:8px 10px;"><strong style="font-size:16px;">9 Rails</strong><div style="font-size:10px;color:var(--ink-3);">Global Pay</div></div>
+              <div class="wire-flat" style="padding:8px 10px;"><strong style="font-size:16px;">23 FX</strong><div style="font-size:10px;color:var(--ink-3);">Integer Units</div></div>
+              <div class="wire-flat" style="padding:8px 10px;"><strong style="font-size:16px;">4 RFCs</strong><div style="font-size:10px;color:var(--ink-3);">Open Spec</div></div>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- 3-LINE INTEGRATION CODE SWITCHER -->
-    <section id="integrate">
-      <div class="container">
-        <div class="section-kicker">// 01. ZERO-REORG INTEGRATION</div>
-        <h2 class="section-title">Add Vectoll to Any Stack in 3 Lines</h2>
-        <p class="section-sub">
-          Never reorganize your repository. Drop Vectoll into your existing Express, Next.js, Hono, FastAPI, or MCP server—or run a 6-line reverse proxy in front of any website.
-        </p>
+      <!-- 7-Stack Switcher -->
+      <div class="section-block">
+        <div class="kicker">// DROP-IN POLYGLOT INTEGRATION</div>
+        <h2 class="h2">Integrate Into Your Existing Project in 60 Seconds</h2>
+        <p class="sub">Zero repository reorganization. Run on your existing port in Node.js, Next.js, FastAPI, or Go—or wrap any upstream app with a 6-line <code>vectoll.yaml</code>.</p>
 
-        <div class="tabs" id="codeTabs">
-          <button class="tab-btn active" data-tab="express">Express (Single Port)</button>
-          <button class="tab-btn" data-tab="nextjs">Next.js / Hono</button>
-          <button class="tab-btn" data-tab="python">Python FastAPI (ASGI)</button>
-          <button class="tab-btn" data-tab="mcp">MCP Server</button>
-          <button class="tab-btn" data-tab="yaml">6-Line vectoll.yaml</button>
-          <button class="tab-btn" data-tab="agent">AI Agent Client</button>
+        <div class="seg-tabs" id="stackTabs">
+          <button class="seg-btn active" data-stack="express">Express / Node</button>
+          <button class="seg-btn" data-stack="nextjs">Next.js / Edge</button>
+          <button class="seg-btn" data-stack="fastapi">Python FastAPI</button>
+          <button class="seg-btn" data-stack="go">Go Edge Gate</button>
+          <button class="seg-btn" data-stack="mcp">MCP Server</button>
+          <button class="seg-btn" data-stack="yaml">6-Line YAML</button>
+          <button class="seg-btn" data-stack="aisdk">AI Agent SDK</button>
         </div>
 
         <div class="code-shell">
-          <div class="code-top">
-            <span id="codeFilename">server.ts — Runs directly on your existing port</span>
-            <button class="btn btn-sm" id="copyCodeBtn" onclick="copyText(document.getElementById('codeContent').textContent, this)">Copy Snippet</button>
+          <div class="code-bar">
+            <span id="stackFile">server.ts</span>
+            <button class="btn btn-xs" onclick="copyText(document.getElementById('stackCode').textContent, 'Code snippet copied')">Copy Code</button>
           </div>
-          <pre class="code-body" id="codeContent"></pre>
+          <pre class="code-pre" id="stackCode"></pre>
         </div>
       </div>
-    </section>
 
-    <!-- INTERACTIVE HTTP 402 & MULTI-RAIL SIMULATOR -->
-    <section id="simulator" style="border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:rgba(13,17,23,0.6);">
-      <div class="container">
-        <div class="section-kicker">// 02. INTERACTIVE PROTOCOL SANDBOX</div>
-        <h2 class="section-title">Live HTTP 402 &amp; Multi-Rail Wire Simulator</h2>
-        <p class="section-sub">
-          Inspect the exact RFC-0001 / RFC-0002 headers, canonical <code>reqHash</code>, Ed25519 <code>vrt1</code> receipt, and double-entry ledger lines generated for every scenario and settlement rail.
-        </p>
+      <!-- Live Traffic Classifier + 23-Currency FX -->
+      <div class="grid-2 section-block">
+        <div class="wire-card" style="padding:24px;">
+          <div class="kicker">// RFC-0001 §4 CLASSIFIER</div>
+          <h3 style="font-size:20px;margin-bottom:6px;">Human vs. AI Bot Classifier Tester</h3>
+          <p style="font-size:13.5px;color:var(--ink-2);margin-bottom:14px;">Test how Vectoll keeps human readers 100% free while challenging crawlers and autonomous SDKs.</p>
 
-        <div class="sim-grid">
-          <div class="wire-card sim-controls">
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
+            <button class="btn btn-xs" data-clspreset="chrome">Chrome Human</button>
+            <button class="btn btn-xs" data-clspreset="gptbot">GPTBot</button>
+            <button class="btn btn-xs" data-clspreset="claudebot">ClaudeBot</button>
+            <button class="btn btn-xs" data-clspreset="python">Python httpx</button>
+            <button class="btn btn-xs" data-clspreset="mcp">Paid MCP Agent</button>
+          </div>
+
+          <div class="field">
+            <label>User-Agent Header</label>
+            <input type="text" id="clsUa" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 14_6) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36" oninput="evaluateClassifier()" />
+          </div>
+          <div class="grid-2" style="gap:10px;">
             <div class="field">
-              <label>Settlement Rail &amp; Currency</label>
-              <select id="simRail">
-                <option value="stripe|USD|2|$0.005">Stripe Cards &amp; Wallets (USD)</option>
-                <option value="x402_usdc|USDC|6|0.005 USDC">x402 Base USDC (Web3)</option>
-                <option value="sepa_instant|EUR|2|€0.02">SEPA Instant (EUR — Europe)</option>
-                <option value="fednow_ach|USD|2|$0.01">FedNow / ACH (USD — US)</option>
-                <option value="pix|BRL|2|R$0.05">PIX Instant (BRL — Brazil)</option>
-                <option value="upi|INR|2|₹0.50">UPI Instant (INR — India)</option>
-                <option value="paynow|SGD|2|S$0.02">PayNow / FPS (SGD — APAC)</option>
-                <option value="mpesa|KES|2|KES 1.00">M-Pesa Daraja (KES — East Africa)</option>
-                <option value="momo|UGX|0|UGX 50">MTN MoMo (UGX — Africa)</option>
+              <label>Accept Header</label>
+              <input type="text" id="clsAccept" value="text/html,application/xhtml+xml" oninput="evaluateClassifier()" />
+            </div>
+            <div class="field">
+              <label>Sec-Fetch-Mode</label>
+              <select id="clsSec" onchange="evaluateClassifier()">
+                <option value="navigate">navigate (Browser)</option>
+                <option value="cors">cors</option>
+                <option value="none">none / omitted</option>
               </select>
             </div>
+          </div>
+          <label style="display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;margin-bottom:14px;cursor:pointer;">
+            <input type="checkbox" id="clsPay" onchange="evaluateClassifier()" /> Includes valid PAYMENT-SIGNATURE: vrt1...
+          </label>
+
+          <div class="wire-flat" style="padding:14px;" id="clsResult"></div>
+        </div>
+
+        <div class="wire-card" style="padding:24px;">
+          <div class="kicker">// ZERO-DRIFT INTEGER FX</div>
+          <h3 style="font-size:20px;margin-bottom:6px;">23-Currency Minor-Unit Converter</h3>
+          <p style="font-size:13.5px;color:var(--ink-2);margin-bottom:14px;">Price routes in your home currency; agents settle in any of 23 supported fiat or Web3 currencies.</p>
+
+          <div class="grid-3" style="gap:10px;margin-bottom:12px;">
+            <div class="field" style="margin:0;"><label>Amount</label><input type="number" id="fxAmt" value="0.05" step="0.005" min="0" oninput="computeFx()" /></div>
+            <div class="field" style="margin:0;"><label>From</label><select id="fxFrom" onchange="computeFx()"></select></div>
+            <div class="field" style="margin:0;"><label>To</label><select id="fxTo" onchange="computeFx()"></select></div>
+          </div>
+
+          <div class="wire-flat" style="padding:12px 14px;margin-bottom:12px;border-color:var(--emerald);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-family:var(--mono);">
+            <strong id="fxHeadline" style="font-size:15px;"></strong>
+            <code id="fxPayload" style="font-size:11.5px;color:var(--emerald);"></code>
+          </div>
+
+          <div id="fxGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:6px;max-height:215px;overflow-y:auto;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ VIEW 2: REAL WEBCRYPTO STUDIO ═══════════════════ -->
+    <div class="view-pane" id="view-studio">
+      <div class="kicker">// LIVE BROWSER CRYPTOGRAPHY (WEBCRYPTO ED25519 + SHA-256)</div>
+      <h1 class="h2">Interactive Protocol &amp; Cryptographic Studio</h1>
+      <p class="sub">Generate real <code>did:key:z6Mk...</code> Ed25519 keys in your browser, compute canonical SHA-256 <code>reqHash</code> digests, mint real <code>vrt1</code> receipts, and test signature tamper detection live.</p>
+
+      <div class="grid-studio section-block">
+        <!-- Left Controls -->
+        <div class="wire-card" style="padding:22px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <span class="badge co" id="stKid">Generating Ed25519...</span>
+            <button class="btn btn-xs" onclick="generateBrowserKeypair()">Rotate Keypair</button>
+          </div>
+
+          <div class="field">
+            <label><span>Facilitator DID (did:key)</span><button class="btn btn-xs" onclick="copyText(document.getElementById('stDid').value, 'DID copied')">Copy</button></label>
+            <input type="text" id="stDid" readonly />
+          </div>
+
+          <div class="grid-2" style="gap:8px;">
+            <div class="field">
+              <label>HTTP Method</label>
+              <select id="stMethod" onchange="mintLiveVrt()">
+                <option>GET</option>
+                <option>POST</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Mode</label>
+              <select id="stMode" onchange="mintLiveVrt()">
+                <option value="instant">instant</option>
+                <option value="escrow">escrow (hold)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Request Path &amp; Query</label>
+            <input type="text" id="stTarget" value="/api/v1/signals?market=global" oninput="mintLiveVrt()" />
+          </div>
+
+          <div class="field">
+            <label>POST Body (for SHA-256 reqHash)</label>
+            <input type="text" id="stBody" value='{"symbol":"NVDA","horizon":"24h"}' oninput="mintLiveVrt()" />
+          </div>
+
+          <div class="field">
+            <label>Settlement Rail</label>
+            <select id="stRail" onchange="mintLiveVrt()">
+              <option value="stripe|USD|2|50|$0.50">Stripe Cards &amp; Wallets ($0.50 USD)</option>
+              <option value="x402_usdc|USDC|6|5000|0.005 USDC">x402 Base USDC (0.005 USDC)</option>
+              <option value="sepa_instant|EUR|2|20|€0.20">SEPA Instant (€0.20 EUR)</option>
+              <option value="fednow_ach|USD|2|100|$1.00">FedNow / ACH ($1.00 USD)</option>
+              <option value="pix|BRL|2|50|R$0.50">PIX Instant (R$0.50 BRL)</option>
+              <option value="upi|INR|2|500|₹5.00">UPI Instant (₹5.00 INR)</option>
+              <option value="paynow|SGD|2|25|S$0.25">PayNow / FPS (S$0.25 SGD)</option>
+              <option value="mpesa|KES|2|1000|KES 10.00">M-Pesa Daraja (KES 10.00)</option>
+              <option value="momo|UGX|0|500|UGX 500">MTN MoMo (UGX 500)</option>
+            </select>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <button class="btn btn-primary" onclick="mintLiveVrt()">Sign &amp; Verify Real VRT1 Receipt</button>
+            <div class="grid-2" style="gap:8px;">
+              <button class="btn btn-rose btn-sm" onclick="tamperLiveVrt()">Tamper Payload (Attack)</button>
+              <button class="btn btn-sm" onclick="sendStudioTokenToInspector()">Inspect Token &rarr;</button>
+            </div>
+          </div>
+
+          <details style="margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--ink-2);">
+            <summary style="cursor:pointer;">View Public JWK (/.well-known/jwks.json)</summary>
+            <pre id="stJwk" style="margin-top:8px;padding:10px;background:var(--bg-0);border:1px solid var(--line);overflow-x:auto;"></pre>
+          </details>
+        </div>
+
+        <!-- Right Live Output -->
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div class="wire-card" style="padding:20px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+              <span class="badge em" id="stVerifyBadge">Verifying...</span>
+              <code id="stReqHash" style="font-size:11.5px;color:var(--cobalt-ink);"></code>
+            </div>
 
             <div class="field">
-              <label>Protocol Scenario</label>
-              <div class="scenario-list" id="scenarioList">
-                <button class="scenario-btn active" data-sc="human"><span>Human Browser</span><span style="color:var(--emerald);">200 FREE</span></button>
-                <button class="scenario-btn" data-sc="unpaid"><span>Unpaid AI Scraper</span><span style="color:var(--amber);">402 PAY</span></button>
-                <button class="scenario-btn" data-sc="paid"><span>Paid AI Agent (VRT1)</span><span style="color:var(--emerald);">200 OK</span></button>
-                <button class="scenario-btn" data-sc="mcp"><span>Paid MCP Tool Call</span><span style="color:var(--violet);">JSON-RPC</span></button>
-                <button class="scenario-btn" data-sc="escrow"><span>Escrow + Passkey HITL</span><span style="color:var(--cobalt);">VSM1P</span></button>
-                <button class="scenario-btn" data-sc="forged"><span>Forged / Replayed VRT</span><span style="color:var(--rose);">402 BLOCK</span></button>
-              </div>
+              <label><span>Canonical Request String (RFC-0001 §5)</span></label>
+              <pre class="wire-flat" id="stCanonical" style="padding:10px;font-size:11.5px;overflow-x:auto;"></pre>
             </div>
 
-            <button class="btn btn-primary" style="width:100%;" onclick="runSimulation()">Re-Sign &amp; Execute Trace</button>
+            <div class="code-shell" style="margin-bottom:14px;">
+              <div class="code-bar">
+                <span>Signed VRT1 Token (vrt1.&lt;claims&gt;.&lt;ed25519_sig&gt;)</span>
+                <button class="btn btn-xs" onclick="copyText(document.getElementById('stTokenOut').textContent, 'VRT1 token copied')">Copy VRT1</button>
+              </div>
+              <pre class="code-pre wrap-pre" id="stTokenOut" style="font-size:11.5px;"></pre>
+            </div>
+
+            <div class="code-shell">
+              <div class="code-bar"><span>Wire Trace (Agent &rarr; Gate)</span></div>
+              <pre class="code-pre wrap-pre" id="stHttpOut" style="font-size:12px;"></pre>
+            </div>
           </div>
 
-          <div class="wire-card sim-stage">
-            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-              <div id="simStatusBadge" class="badge em">HTTP 200 OK — HUMAN PASSTHROUGH</div>
-              <div style="font-family:var(--mono);font-size:12px;color:var(--ink-2);" id="simMeta">reqHash: sha256:9f4c...a81b &bull; 0.19 ms</div>
+          <div class="wire-card" style="padding:18px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-family:var(--mono);font-size:11.5px;">
+              <span style="color:var(--violet);">IMMUTABLE DOUBLE-ENTRY JOURNAL</span>
+              <span style="color:var(--emerald);">SUM(DEBIT) === SUM(CREDIT)</span>
             </div>
-
-            <div>
-              <div class="trace-label"><span style="color:var(--cobalt);">REQUEST FRAME</span><span style="color:var(--ink-3);">Client &rarr; Vectoll Gate</span></div>
-              <div class="trace-block" id="simReq"></div>
-            </div>
-
-            <div>
-              <div class="trace-label"><span style="color:var(--emerald);">RESPONSE FRAME</span><span style="color:var(--ink-3);">Vectoll Gate &rarr; Client</span></div>
-              <div class="trace-block" id="simRes"></div>
-            </div>
-
-            <div>
-              <div class="trace-label"><span style="color:var(--violet);">DOUBLE-ENTRY LEDGER JOURNAL</span><span style="color:var(--emerald);">DEBIT === CREDIT</span></div>
-              <div class="wire-card-flat" style="overflow-x:auto;">
-                <table class="ledger-table">
-                  <thead>
-                    <tr><th>Account</th><th>Currency</th><th>Debit</th><th>Credit</th><th>Memo</th></tr>
-                  </thead>
-                  <tbody id="simLedger"></tbody>
-                </table>
-              </div>
-            </div>
+            <table class="data-table">
+              <thead><tr><th>Account</th><th>Cur</th><th>Debit</th><th>Credit</th><th>Ref</th></tr></thead>
+              <tbody id="stLedgerBody"></tbody>
+            </table>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- INTERACTIVE CONFIG BUILDER -->
-    <section id="builder">
-      <div class="container">
-        <div class="section-kicker">// 03. INTERACTIVE CONFIG GENERATOR</div>
-        <h2 class="section-title">Generate Your <code>vectoll.yaml</code> or Express Middleware</h2>
-        <p class="section-sub">
-          Configure your routes, human-browser passthrough, structured HTML-to-JSON agent translation, and escrow guardrails—then copy directly into your project.
-        </p>
-
-        <div class="builder-grid">
-          <div class="wire-card" style="padding:22px;">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-              <div class="field">
-                <label>Service Name</label>
-                <input type="text" id="cfgService" value="acme-api" oninput="renderConfig()" />
-              </div>
-              <div class="field">
-                <label>Upstream Origin URL</label>
-                <input type="text" id="cfgUpstream" value="http://localhost:3000" oninput="renderConfig()" />
-              </div>
-            </div>
-
-            <div class="toggle-row">
-              <label><input type="checkbox" id="cfgBrowsers" checked onchange="renderConfig()" /> Keep Human Browsers Free</label>
-              <label><input type="checkbox" id="cfgStructured" checked onchange="renderConfig()" /> HTML &rarr; JSON for Agents</label>
-              <label><input type="checkbox" id="cfgMcp" checked onchange="renderConfig()" /> Auto-Expose <code>/mcp</code></label>
-            </div>
-
-            <div style="font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-2);margin:14px 0 8px;">
-              Metered Routes
-            </div>
-            <div id="routeList"></div>
-            <button class="btn btn-sm" style="margin-top:8px;" onclick="addRoute()">+ Add Route</button>
-          </div>
-
-          <div class="code-shell">
-            <div class="code-top">
-              <div style="display:flex;gap:8px;">
-                <button class="tab-btn active" id="outYamlBtn" onclick="setBuilderMode('yaml')">vectoll.yaml</button>
-                <button class="tab-btn" id="outExpressBtn" onclick="setBuilderMode('express')">Express TS</button>
-              </div>
-              <button class="btn btn-sm" onclick="copyText(document.getElementById('builderOutput').textContent, this)">Copy Config</button>
-            </div>
-            <pre class="code-body" id="builderOutput"></pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 23-CURRENCY INTEGER FX MATRIX -->
-    <section id="fx" style="border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:rgba(13,17,23,0.6);">
-      <div class="container">
-        <div class="section-kicker">// 04. LOSSLESS MULTI-CURRENCY SETTLEMENT</div>
-        <h2 class="section-title">23-Currency Integer FX Engine</h2>
-        <p class="section-sub">
-          Price your API in USD, EUR, GBP, JPY, or USDC and let agents settle in any supported local currency. Every calculation runs in exact integer minor units with zero floating-point drift.
-        </p>
-
-        <div class="wire-card fx-card">
-          <div class="fx-controls">
-            <div class="field" style="margin:0;">
-              <label>Amount</label>
-              <input type="number" id="fxAmount" value="1.00" step="0.01" min="0" oninput="computeFx()" />
-            </div>
-            <div class="field" style="margin:0;">
-              <label>Merchant Currency</label>
-              <select id="fxFrom" onchange="computeFx()"></select>
-            </div>
-            <div class="field" style="margin:0;">
-              <label>Agent Settlement Currency</label>
-              <select id="fxTo" onchange="computeFx()"></select>
-            </div>
-          </div>
-
-          <div class="fx-result">
-            <div>
-              <div style="font-size:11px;color:var(--ink-2);">EXACT INTEGER CONVERSION</div>
-              <div id="fxHeadline" style="font-size:24px;font-weight:800;color:var(--ink-0);margin-top:4px;"></div>
-            </div>
-            <div style="text-align:right;">
-              <div style="font-size:11px;color:var(--ink-2);">MINOR-UNIT INTEGER PAYLOAD</div>
-              <div id="fxMinor" style="font-size:14px;color:var(--emerald);margin-top:4px;"></div>
-            </div>
-          </div>
-
-          <div class="fx-grid" id="fxMatrix"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RFCS & ARCHITECTURE -->
-    <section id="rfcs">
-      <div class="container">
-        <div class="section-kicker">// 05. OPEN SPECIFICATION &amp; CONFORMANCE</div>
-        <h2 class="section-title">Built on Open RFCs, Audited for Production</h2>
-        <p class="section-sub">
-          Every Vectoll primitive is specified in public RFCs, backed by 500-vector adversarial fuzzing and 100-way concurrent double-spend verification.
-        </p>
-
-        <div class="grid-2" style="margin-bottom:24px;">
-          <div class="wire-card feature-card">
-            <h3><span>Wire Protocol &amp; Receipts</span><span class="rfc-tag">RFC-0001</span></h3>
-            <p>Canonical HTTP 402 + x402 V2 challenge format, request-bound SHA-256 <code>reqHash</code>, and compact Ed25519 <code>vrt1</code> receipts verifiable completely offline via <code>did:key</code>.</p>
-          </div>
-          <div class="wire-card feature-card">
-            <h3><span>MCP Payment Binding</span><span class="rfc-tag">RFC-0002</span></h3>
-            <p>Native Model Context Protocol JSON-RPC 2.0 metering via <code>_meta.vectoll</code>, deterministic tool parameter hashing, and one-command <code>vectoll mcp-bridge</code> for Claude &amp; Cursor.</p>
-          </div>
-          <div class="wire-card feature-card">
-            <h3><span>Spend Mandates &amp; Passkeys</span><span class="rfc-tag">RFC-0003</span></h3>
-            <p>Delegated agent budgets signed with Ed25519 (<code>vsm1</code>) or hardware WebAuthn FIDO2 P-256 Passkeys (<code>vsm1p</code>), plus Human-in-the-Loop (HITL) approval gates and escrow release/refund.</p>
-          </div>
-          <div class="wire-card feature-card">
-            <h3><span>Cross-Facilitator Federation</span><span class="rfc-tag">RFC-0004</span></h3>
-            <p>Zero-lock-in peering vouchers (<code>vfv1</code>) allowing an agent funded on Facilitator A to settle instantly against a merchant on Facilitator B with bilateral net settlement.</p>
-          </div>
-        </div>
-
-        <div class="wire-card" style="padding:28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;">
+      <!-- HTML to Structured Agent Translator -->
+      <div class="wire-card" style="padding:24px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
           <div>
-            <div style="font-family:var(--mono);font-size:12px;color:var(--emerald);letter-spacing:0.12em;">READY FOR PRODUCTION TREASURY?</div>
-            <h3 style="font-size:24px;margin:4px 0;">Want Zero-Ops Multi-Rail Settlement?</h3>
-            <p style="color:var(--ink-2);max-width:600px;">Self-host the Apache 2.0 protocol forever—or connect to <strong>Vectoll Cloud</strong> at <code>vectoll.com</code> for managed Stripe, USDC, SEPA, PIX, UPI, and Mobile Money treasury with instant payouts.</p>
+            <div class="kicker">// BUILT-IN AGENT CONTENT TRANSFORMER</div>
+            <h3 style="font-size:20px;">Live HTML &rarr; Clean LLM Markdown/JSON Translator</h3>
           </div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <a class="btn btn-primary" href="https://vectoll.com" target="_blank" rel="noopener">Visit vectoll.com &rarr;</a>
-            <a class="btn" href="https://github.com/vectoll/vectoll" target="_blank" rel="noopener">Star on GitHub</a>
+          <span class="badge em" id="trSavingsBadge">-75% LLM Context Tokens</span>
+        </div>
+        <div class="grid-2">
+          <div>
+            <label style="font-family:var(--mono);font-size:11px;color:var(--ink-2);display:block;margin-bottom:6px;">RAW UPSTREAM HTML (WITH ADS, SCRIPTS &amp; NAV)</label>
+            <textarea id="trHtmlIn" rows="9" oninput="runHtmlTranslator()">&lt;html&gt;
+&lt;nav&gt;Subscribe | Login | Cookie Banner&lt;/nav&gt;
+&lt;script&gt;window.adsPush({track:true});&lt;/script&gt;
+&lt;div class="ad-banner"&gt;SPONSORED POPUP AD&lt;/div&gt;
+&lt;article&gt;
+  &lt;h1&gt;Q4 Global Semiconductor Supply Report&lt;/h1&gt;
+  &lt;p&gt;Leading foundry utilization reached 94.2% across Taiwan, South Korea, and Germany.&lt;/p&gt;
+  &lt;h2&gt;Key Takeaways&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;CoWoS packaging capacity doubled year-over-year.&lt;/li&gt;
+    &lt;li&gt;Sub-2nm gate-all-around yields exceeded 78%.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/article&gt;
+&lt;footer&gt;Copyright 2026 Terms Privacy&lt;/footer&gt;
+&lt;/html&gt;</textarea>
+          </div>
+          <div class="code-shell">
+            <div class="code-bar">
+              <span>X-Vectoll-Transform: structured-json</span>
+              <button class="btn btn-xs" onclick="copyText(document.getElementById('trJsonOut').textContent, 'Structured JSON copied')">Copy</button>
+            </div>
+            <pre class="code-pre wrap-pre" id="trJsonOut" style="max-height:225px;overflow-y:auto;"></pre>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- ═══════════════════ VIEW 3: INSPECTOR & VALIDATOR ═══════════════════ -->
+    <div class="view-pane" id="view-inspector">
+      <div class="kicker">// PROTOCOL DEBUGGER &amp; CONFORMANCE SUITE</div>
+      <h1 class="h2">VRT1 Token Debugger &amp; <code>vectoll.json</code> Validator</h1>
+      <p class="sub">Decode and cryptographically verify any <code>vrt1</code>, <code>vsm1</code>, <code>vsm1p</code>, or <code>vfv1</code> token offline in your browser—and audit your discovery manifest against RFC-0001.</p>
+
+      <div class="grid-2 section-block">
+        <div class="wire-card" style="padding:24px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+            <h3 style="font-size:18px;">Cryptographic Token Inspector</h3>
+            <button class="btn btn-xs btn-emerald" onclick="document.getElementById('inspToken').value=lastMintedVrt;document.getElementById('inspPubKey').value=studioKey.did;runTokenInspector();">Load Live Studio VRT1</button>
+          </div>
+          <div class="field">
+            <label>Paste Token (vrt1 / vsm1 / vsm1p / vfv1)</label>
+            <textarea id="inspToken" rows="4" placeholder="vrt1.eyJ2IjoxLC..." oninput="runTokenInspector()"></textarea>
+          </div>
+          <div class="field">
+            <label>Facilitator Public Key (did:key:z6Mk... or base64url)</label>
+            <input type="text" id="inspPubKey" oninput="runTokenInspector()" />
+          </div>
+          <div style="margin-bottom:12px;"><span class="badge" id="inspStatus">Ready</span></div>
+          <div class="code-shell">
+            <div class="code-bar"><span>Decoded Envelope &amp; Claims</span></div>
+            <pre class="code-pre wrap-pre" id="inspClaims" style="max-height:250px;overflow-y:auto;">{}</pre>
+          </div>
+        </div>
+
+        <div class="wire-card" style="padding:24px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+            <h3 style="font-size:18px;"><code>/.well-known/vectoll.json</code> Validator</h3>
+            <button class="btn btn-xs" onclick="validateManifest()">Run Audit</button>
+          </div>
+          <div class="field">
+            <label>Discovery Manifest JSON</label>
+            <textarea id="manifestIn" rows="8" oninput="validateManifest()"></textarea>
+          </div>
+          <div id="manifestChecks"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ VIEW 4: FULL-STACK ARCHITECT ═══════════════════ -->
+    <div class="view-pane" id="view-builder">
+      <div class="kicker">// ZERO-BOILERPLATE GENERATOR</div>
+      <h1 class="h2">Full-Stack Integration &amp; Deployment Architect</h1>
+      <p class="sub">Design your metered routes once—instantly export synchronized <code>vectoll.yaml</code>, Express TypeScript, Python FastAPI, Docker Compose, <code>vectoll.json</code>, and Claude Desktop MCP Bridge configs.</p>
+
+      <div class="grid-2">
+        <div class="wire-card" style="padding:24px;">
+          <div class="grid-2" style="gap:10px;">
+            <div class="field"><label>Service Name</label><input type="text" id="bSvc" value="acme-intel-api" oninput="renderBuilderOutput()" /></div>
+            <div class="field"><label>Origin URL</label><input type="text" id="bOrigin" value="http://localhost:3000" oninput="renderBuilderOutput()" /></div>
+          </div>
+          <div class="field"><label>Facilitator Endpoint</label><input type="text" id="bFac" value="https://pay.vectoll.com" oninput="renderBuilderOutput()" /></div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:16px;margin:10px 0 16px;font-family:var(--mono);font-size:12px;">
+            <label style="cursor:pointer;"><input type="checkbox" id="bFree" checked onchange="renderBuilderOutput()" /> Human Browsers Free</label>
+            <label style="cursor:pointer;"><input type="checkbox" id="bMcp" checked onchange="renderBuilderOutput()" /> Auto-Expose /mcp Tools</label>
+          </div>
+
+          <div style="font-family:var(--mono);font-size:11px;color:var(--ink-2);margin-bottom:8px;">METERED ROUTES</div>
+          <div id="bRoutes"></div>
+          <button class="btn btn-sm" style="margin-top:6px;" onclick="builderRoutes.push({method:'GET',path:'/api/v1/feed',price:'$0.01',mode:'instant'});renderBuilderRoutes();renderBuilderOutput();">+ Add Metered Route</button>
+        </div>
+
+        <div>
+          <div class="seg-tabs" id="builderTabs">
+            <button class="seg-btn active" data-art="yaml">vectoll.yaml</button>
+            <button class="seg-btn" data-art="express">Express TS</button>
+            <button class="seg-btn" data-art="fastapi">FastAPI Py</button>
+            <button class="seg-btn" data-art="docker">Docker Compose</button>
+            <button class="seg-btn" data-art="wellknown">vectoll.json</button>
+            <button class="seg-btn" data-art="claude">Claude MCP</button>
+          </div>
+          <div class="code-shell">
+            <div class="code-bar">
+              <span id="bFilename">vectoll.yaml</span>
+              <div style="display:flex;gap:6px;">
+                <button class="btn btn-xs" onclick="copyText(document.getElementById('bOut').textContent, 'Artifact copied')">Copy</button>
+                <button class="btn btn-xs btn-emerald" onclick="downloadFile(document.getElementById('bFilename').textContent, document.getElementById('bOut').textContent)">Download</button>
+              </div>
+            </div>
+            <pre class="code-pre" id="bOut"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ VIEW 5: RFCS & DOCS ═══════════════════ -->
+    <div class="view-pane" id="view-docs">
+      <div class="grid-sidebar">
+        <aside class="wire-card docs-nav">
+          <div class="docs-nav-group">Getting Started</div>
+          <button class="doc-link active" data-doc="quickstart">5-Minute Quickstart</button>
+          <button class="doc-link" data-doc="security">Security &amp; 500-Vector Audit</button>
+          <div class="docs-nav-group">Normative RFCs</div>
+          <button class="doc-link" data-doc="rfc1">RFC-0001: Core 402 &amp; VRT1</button>
+          <button class="doc-link" data-doc="rfc2">RFC-0002: MCP Binding</button>
+          <button class="doc-link" data-doc="rfc3">RFC-0003: Passkey Mandates</button>
+          <button class="doc-link" data-doc="rfc4">RFC-0004: Federation (vfv1)</button>
+        </aside>
+        <article class="wire-card doc-article" id="docContent"></article>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ VIEW 6: ECOSYSTEM DIRECTORY ═══════════════════ -->
+    <div class="view-pane" id="view-directory">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:24px;">
+        <div>
+          <div class="kicker">// GLOBAL DISCOVERY INDEX</div>
+          <h1 class="h2" style="margin-bottom:6px;">Vectoll-Enabled APIs &amp; MCP Servers</h1>
+          <p style="color:var(--ink-2);font-size:15px;">Discover live endpoints publishing <code>/.well-known/vectoll.json</code> across 9 settlement rails.</p>
+        </div>
+        <input type="text" id="dirSearch" placeholder="Filter by keyword, rail, or MCP tool..." style="max-width:300px;" oninput="renderDirectory()" />
+      </div>
+
+      <div class="seg-tabs" id="dirCats">
+        <button class="seg-btn active" data-cat="all">All Endpoints</button>
+        <button class="seg-btn" data-cat="finance">Finance &amp; FX</button>
+        <button class="seg-btn" data-cat="media">News &amp; Media</button>
+        <button class="seg-btn" data-cat="compute">AI &amp; Scientific Compute</button>
+        <button class="seg-btn" data-cat="commerce">Global Commerce &amp; Escrow</button>
+      </div>
+
+      <div class="grid-3" id="dirGrid"></div>
+    </div>
   </main>
+
+  <!-- Command Palette Modal -->
+  <div class="backdrop" id="cmdModal" onclick="if(event.target===this)closePalette()">
+    <div class="wire-card palette-box">
+      <input type="text" class="palette-input mono" id="cmdInput" placeholder="Jump to Studio, Inspector, RFCs, Builder, or actions..." />
+      <div class="palette-list" id="cmdList"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
 
   <footer>
     <div class="container">
       <div class="footer-grid">
         <div>
-          <img src="/brand/logo-wordmark-dark.svg" alt="VECTOLL" style="height:26px;margin-bottom:12px;" />
-          <p style="max-width:300px;">Open-source agentic metering, HTTP 402 / x402 V2 verification, and global multi-rail settlement. Licensed under Apache 2.0.</p>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <img src="/brand/logo-mark.svg" alt="Vectoll" width="26" height="26" />
+            <strong style="font-family:var(--mono);letter-spacing:0.12em;">VECTOLL.ORG</strong>
+          </div>
+          <p style="max-width:310px;">Open-source protocol for AI agent metering, HTTP 402 / x402 V2 verification, and global multi-rail settlement. Apache 2.0 License.</p>
         </div>
         <div>
-          <h4>Protocol (.org)</h4>
-          <a href="#integrate">3-Line Quickstart</a>
-          <a href="#simulator">402 Wire Simulator</a>
-          <a href="#builder">Config Builder</a>
-          <a href="#rfcs">RFC Specifications</a>
+          <h4>Interactive Tools</h4>
+          <button class="foot-btn" onclick="switchView('studio')">Ed25519 WebCrypto Studio</button>
+          <button class="foot-btn" onclick="switchView('inspector')">VRT1 &amp; Manifest Inspector</button>
+          <button class="foot-btn" onclick="switchView('builder')">Full-Stack Config Architect</button>
+          <button class="foot-btn" onclick="switchView('directory')">Global MCP Directory</button>
+        </div>
+        <div>
+          <h4>Specifications</h4>
+          <button class="foot-btn" onclick="switchView('docs');renderDoc('rfc1')">RFC-0001: Wire &amp; VRT1</button>
+          <button class="foot-btn" onclick="switchView('docs');renderDoc('rfc2')">RFC-0002: MCP Binding</button>
+          <button class="foot-btn" onclick="switchView('docs');renderDoc('rfc3')">RFC-0003: Passkey Mandates</button>
+          <button class="foot-btn" onclick="switchView('docs');renderDoc('rfc4')">RFC-0004: Federation</button>
         </div>
         <div>
           <h4>Ecosystem</h4>
           <a href="https://vectoll.com" target="_blank" rel="noopener">Vectoll Cloud (vectoll.com)</a>
-          <a href="https://github.com/vectoll/vectoll" target="_blank" rel="noopener">GitHub Repository</a>
-          <a href="/brand/BRAND_GUIDELINES.md">Brand Assets</a>
-        </div>
-        <div>
-          <h4>SDKs &amp; Gateways</h4>
-          <a href="https://github.com/vectoll/vectoll/tree/main/packages/server" target="_blank" rel="noopener">@vectoll/server (Node)</a>
-          <a href="https://github.com/vectoll/vectoll/tree/main/sdks/python" target="_blank" rel="noopener">vectoll (Python ASGI)</a>
-          <a href="https://github.com/vectoll/vectoll/tree/main/services/gate" target="_blank" rel="noopener">vectoll-gate (Go)</a>
+          <a href="https://github.com/vectoll/vectoll" target="_blank" rel="noopener">GitHub Monorepo</a>
+          <a href="/brand/BRAND_GUIDELINES.md">Brand Kit &amp; SVGs</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script>
-    // 1. Copy helper
-    function copyText(text, btn) {
-      navigator.clipboard.writeText(text).then(() => {
-        const orig = btn.textContent;
-        btn.textContent = 'Copied!';
-        setTimeout(() => { btn.textContent = orig; }, 1400);
-      });
-    }
-
-    // 2. Hero telemetry loop
-    let activeStep = 0;
-    const latencies = ['0.24 ms verify', '0.28 ms verify', '0.21 ms verify', '0.31 ms verify'];
-    setInterval(() => {
-      for (let i = 0; i < 3; i++) {
-        document.getElementById('pstep-' + i).classList.toggle('active', i === activeStep);
-      }
-      document.getElementById('wireLatency').textContent = latencies[activeStep % latencies.length];
-      activeStep = (activeStep + 1) % 3;
-    }, 2400);
-
-    // 3. 6-Tab Code Switcher
-    const CODE_SNIPPETS = {
-      express: {
-        file: 'server.ts — Express middleware (runs on your existing port)',
-        code: `import express from 'express';
-import { vectoll } from '@vectoll/server';
-
-const app = express();
-app.use(vectoll({
-  browsers: 'free', // Human browsers stay 100% free
-  routes: {
-    'GET /api/data': '$0.005',
-    'POST /api/analyze': { price: '€0.05', escrow: true, approveAbove: '€10.00' },
-  },
-}));
-
-app.get('/api/data', (_req, res) => res.json({ status: 'ok', signal: 98.4 }));
-app.listen(3000);`
-      },
-      nextjs: {
-        file: 'app/api/insights/route.ts — Web Standard Fetch (Next.js / Hono / Cloudflare)',
-        code: `import { withVectoll } from '@vectoll/server';
-
-export const GET = withVectoll(
-  { price: '$0.01', browsers: 'free', rails: ['stripe', 'x402_usdc', 'sepa_instant'] },
-  async (req) => {
-    return Response.json({
-      market: 'global',
-      receipt: req.headers.get('x-vectoll-receipt-id'),
-    });
-  }
-);`
-      },
-      python: {
-        file: 'main.py — FastAPI / Starlette ASGI Middleware',
-        code: `from fastapi import FastAPI
-from vectoll.middleware import VectollMiddleware
-
-app = FastAPI()
-app.add_middleware(
-    VectollMiddleware,
-    browsers_free=True,
-    routes={
-        "GET /api/forecast": "$0.005",
-        "POST /api/report": {"price": "€0.10", "escrow": True},
-    },
-)
-
-@app.get("/api/forecast")
-async def forecast():
-    return {"region": "global", "confidence": 0.992}`
-      },
-      mcp: {
-        file: 'mcp-server.ts — Metered Model Context Protocol Server',
-        code: `import { createMeteredMcpServer } from '@vectoll/server';
-
-const mcp = createMeteredMcpServer({
-  name: 'global-market-intel',
-  tools: {
-    get_quote: {
-      price: '$0.002',
-      description: 'Fetch live multi-currency pricing quote',
-      handler: async ({ symbol }) => ({ symbol, priceUsd: 184.22 }),
-    },
-  },
-});
-
-mcp.listen(4020); // Exposes POST /mcp + /.well-known/vectoll.json`
-      },
-      yaml: {
-        file: 'vectoll.yaml — Zero-code reverse proxy for any website or API',
-        code: `service: my-global-api
-upstream: http://localhost:3000
-browsers: free
-routes:
-  "GET /articles/*": { price: "$0.005", transform: structured }
-  "POST /api/book":  { price: "$2.50", escrow: true, approve_above: "$25.00" }
-
-# Run: npx @vectoll/cli proxy --config vectoll.yaml`
-      },
-      agent: {
-        file: 'agent.ts — Autonomous AI Agent with Spend Mandate (@vectoll/ai-sdk)',
-        code: `import { createVectollClient } from '@vectoll/sdk';
-
-const agent = createVectollClient({
-  facilitatorUrl: 'https://pay.vectoll.com',
-  mandate: process.env.VECTOLL_PASSKEY_MANDATE, // Hardware P-256 vsm1p
-  preferredRail: 'x402_usdc',
-});
-
-// Automatically negotiates HTTP 402 -> settles -> retries with vrt1 receipt
-const res = await agent.fetch('https://api.example.com/api/data');
-console.log(await res.json());`
-      }
-    };
-
-    function renderTab(key) {
-      const s = CODE_SNIPPETS[key];
-      document.getElementById('codeFilename').textContent = s.file;
-      document.getElementById('codeContent').textContent = s.code;
-      document.querySelectorAll('#codeTabs .tab-btn').forEach(b => {
-        b.classList.toggle('active', b.dataset.tab === key);
-      });
-    }
-    document.querySelectorAll('#codeTabs .tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => renderTab(btn.dataset.tab));
-    });
-    renderTab('express');
-
-    // 4. Interactive 402 & Multi-Rail Simulator
-    let currentScenario = 'human';
-    document.querySelectorAll('#scenarioList .scenario-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        currentScenario = btn.dataset.sc;
-        document.querySelectorAll('#scenarioList .scenario-btn').forEach(b => b.classList.toggle('active', b === btn));
-        runSimulation();
-      });
-    });
-    document.getElementById('simRail').addEventListener('change', runSimulation);
-
-    function randHex(len) {
-      const chars = '0123456789abcdef';
-      let out = '';
-      for (let i = 0; i < len; i++) out += chars[Math.floor(Math.random() * 16)];
-      return out;
-    }
-
-    function runSimulation() {
-      const [rail, currency, decimals, displayPrice] = document.getElementById('simRail').value.split('|');
-      const reqHash = 'sha256:' + randHex(16);
-      const rid = 'vrt_' + randHex(10);
-      const sig = 'vrt1.eyJyaWQiOi' + randHex(18) + '.' + randHex(24);
-      const minorAmt = decimals === '0' ? '50' : decimals === '6' ? '5000' : '50';
-
-      const badge = document.getElementById('simStatusBadge');
-      const meta = document.getElementById('simMeta');
-      const reqEl = document.getElementById('simReq');
-      const resEl = document.getElementById('simRes');
-      const ledgerEl = document.getElementById('simLedger');
-
-      meta.textContent = `rail: ${rail} • reqHash: ${reqHash} • 0.${18 + Math.floor(Math.random()*14)} ms`;
-
-      if (currentScenario === 'human') {
-        badge.className = 'badge em';
-        badge.textContent = 'HTTP 200 OK — HUMAN BROWSER PASSTHROUGH (FREE)';
-        reqEl.textContent = `GET /articles/global-markets HTTP/1.1\nHost: api.vectoll.org\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/537.36 Chrome/131.0\nAccept: text/html,application/xhtml+xml\nSec-Fetch-Mode: navigate`;
-        resEl.textContent = `HTTP/1.1 200 OK\nX-Vectoll-Decision: human-passthrough\nContent-Type: text/html; charset=utf-8\n\n<!doctype html><html><body><h1>Global Markets Report</h1>...</body></html>`;
-        ledgerEl.innerHTML = `<tr><td colspan="5" style="color:var(--ink-2);">No charge recorded — human browsers always pass through at $0.00.</td></tr>`;
-      } else if (currentScenario === 'unpaid') {
-        badge.className = 'badge';
-        badge.style.borderColor = 'var(--amber)';
-        badge.style.color = '#FCD34D';
-        badge.textContent = 'HTTP 402 PAYMENT REQUIRED — CHALLENGE ISSUED';
-        reqEl.textContent = `GET /api/v1/signals HTTP/1.1\nHost: api.vectoll.org\nUser-Agent: AutonomousAgent/2.4 (MCP)\nAccept: application/json`;
-        resEl.textContent = `HTTP/1.1 402 Payment Required\nPAYMENT-REQUIRED: {"x402Version":2,"accepts":[{"rail":"${rail}","currency":"${currency}","amount":"${minorAmt}","display":"${displayPrice}","facilitator":"https://pay.vectoll.com"}]}\nX-Vectoll-Req-Hash: ${reqHash}\n\n{"error":"payment_required","price":"${displayPrice}","rail":"${rail}"}`;
-        ledgerEl.innerHTML = `<tr><td colspan="5" style="color:var(--amber);">Awaiting settlement — agent may pay on ${rail} or any of 8 other supported rails.</td></tr>`;
-      } else if (currentScenario === 'paid') {
-        badge.className = 'badge em';
-        badge.textContent = 'HTTP 200 OK — OFFLINE ED25519 VRT1 VERIFIED';
-        reqEl.textContent = `GET /api/v1/signals HTTP/1.1\nHost: api.vectoll.org\nUser-Agent: AutonomousAgent/2.4\nPAYMENT-SIGNATURE: ${sig}`;
-        resEl.textContent = `HTTP/1.1 200 OK\nPAYMENT-RESPONSE: {"receiptId":"${rid}","rail":"${rail}","currency":"${currency}","verifiedOffline":true}\nX-Vectoll-Transform: structured-json\n\n{"title":"Global Signals","summary":"Clean structured payload for LLM context","pricePaid":"${displayPrice}"}`;
-        ledgerEl.innerHTML = `
-          <tr><td>agent:wallet:${rail}</td><td>${currency}</td><td>${displayPrice}</td><td>—</td><td>Receipt ${rid}</td></tr>
-          <tr><td>merchant:payable:acme</td><td>${currency}</td><td>—</td><td>${displayPrice}</td><td>Instant settlement</td></tr>`;
-      } else if (currentScenario === 'mcp') {
-        badge.className = 'badge vi';
-        badge.textContent = 'MCP 200 OK — JSON-RPC 2.0 TOOL METERED';
-        reqEl.textContent = `POST /mcp HTTP/1.1\nContent-Type: application/json\n\n{"jsonrpc":"2.0","id":7,"method":"tools/call","params":{"name":"get_quote","arguments":{"symbol":"NVDA"},"_meta":{"vectoll":{"receipt":"${sig}"}}}}`;
-        resEl.textContent = `HTTP/1.1 200 OK\nContent-Type: application/json\n\n{"jsonrpc":"2.0","id":7,"result":{"content":[{"type":"text","text":"NVDA: $142.85 (+1.4%)"}],"_meta":{"vectoll":{"receiptId":"${rid}","rail":"${rail}","settled":"${displayPrice}"}}}}`;
-        ledgerEl.innerHTML = `
-          <tr><td>agent:mcp:${rail}</td><td>${currency}</td><td>${displayPrice}</td><td>—</td><td>MCP tools/call get_quote</td></tr>
-          <tr><td>merchant:mcp:payable</td><td>${currency}</td><td>—</td><td>${displayPrice}</td><td>RFC-0002 tool settlement</td></tr>`;
-      } else if (currentScenario === 'escrow') {
-        badge.className = 'badge co';
-        badge.textContent = 'ESCROW LOCKED — WEBAUTHN PASSKEY (VSM1P) + HITL';
-        reqEl.textContent = `POST /api/v1/bookings HTTP/1.1\nPAYMENT-SIGNATURE: ${sig}\nX-Vectoll-Mandate: vsm1p.ES256.passkey_${randHex(12)}\n\n{"hotelId":"zurich-grand-01","nights":2}`;
-        resEl.textContent = `HTTP/1.1 200 OK\nPAYMENT-RESPONSE: {"receiptId":"${rid}","settlementMode":"escrow","mandateAlg":"ES256-WebAuthn","hitlStatus":"approved"}\n\n{"bookingId":"bk_${randHex(6)}","escrowState":"captured_on_confirmation"}`;
-        ledgerEl.innerHTML = `
-          <tr><td>agent:wallet:${rail}</td><td>${currency}</td><td>${displayPrice}</td><td>—</td><td>Escrow hold (vsm1p)</td></tr>
-          <tr><td>escrow:liability:hold</td><td>${currency}</td><td>—</td><td>${displayPrice}</td><td>Released upon 200 OK</td></tr>`;
-      } else {
-        badge.className = 'badge';
-        badge.style.borderColor = 'var(--rose)';
-        badge.style.color = '#FDA4AF';
-        badge.textContent = 'HTTP 402 REJECTED — REPLAY / INVALID SIGNATURE BLOCKED';
-        reqEl.textContent = `GET /api/v1/signals HTTP/1.1\nPAYMENT-SIGNATURE: ${sig} (TAMPERED / REPLAYED)`;
-        resEl.textContent = `HTTP/1.1 402 Payment Required\nX-Vectoll-Error: REPLAY_DETECTED_OR_REQHASH_MISMATCH\n\n{"error":"invalid_receipt","detail":"Receipt ${rid} already consumed in Redis SETNX replay guard"}`;
-        ledgerEl.innerHTML = `<tr><td colspan="5" style="color:#FDA4AF;">Blocked at Edge Gate in 0.14 ms — zero upstream load, zero ledger mutation.</td></tr>`;
-      }
-    }
-    runSimulation();
-
-    // 5. Interactive Config Builder
-    let builderMode = 'yaml';
-    let routes = [
-      { method: 'GET', path: '/api/data', price: '$0.005', transform: 'none' },
-      { method: 'GET', path: '/articles/*', price: '$0.01', transform: 'structured' },
-      { method: 'POST', path: '/api/book', price: '€2.50', transform: 'escrow' },
-    ];
-
-    function setBuilderMode(mode) {
-      builderMode = mode;
-      document.getElementById('outYamlBtn').classList.toggle('active', mode === 'yaml');
-      document.getElementById('outExpressBtn').classList.toggle('active', mode === 'express');
-      renderConfig();
-    }
-
-    function renderRouteRows() {
-      const container = document.getElementById('routeList');
-      container.innerHTML = '';
-      routes.forEach((r, idx) => {
-        const row = document.createElement('div');
-        row.className = 'route-row';
-        row.innerHTML = `
-          <select onchange="routes[${idx}].method=this.value;renderConfig()">
-            <option ${r.method==='GET'?'selected':''}>GET</option>
-            <option ${r.method==='POST'?'selected':''}>POST</option>
-          </select>
-          <input type="text" value="${r.path}" oninput="routes[${idx}].path=this.value;renderConfig()" />
-          <input type="text" value="${r.price}" oninput="routes[${idx}].price=this.value;renderConfig()" />
-          <select class="route-transform" onchange="routes[${idx}].transform=this.value;renderConfig()">
-            <option value="none" ${r.transform==='none'?'selected':''}>Instant</option>
-            <option value="structured" ${r.transform==='structured'?'selected':''}>HTML→JSON</option>
-            <option value="escrow" ${r.transform==='escrow'?'selected':''}>Escrow</option>
-          </select>
-          <button class="btn btn-sm" style="padding:6px 0;" onclick="routes.splice(${idx},1);renderRouteRows();renderConfig()">×</button>
-        `;
-        container.appendChild(row);
-      });
-    }
-
-    function addRoute() {
-      routes.push({ method: 'GET', path: '/api/v2/resource', price: '$0.02', transform: 'none' });
-      renderRouteRows();
-      renderConfig();
-    }
-
-    function renderConfig() {
-      const service = document.getElementById('cfgService').value || 'my-api';
-      const upstream = document.getElementById('cfgUpstream').value || 'http://localhost:3000';
-      const browsers = document.getElementById('cfgBrowsers').checked;
-      const structured = document.getElementById('cfgStructured').checked;
-      const mcp = document.getElementById('cfgMcp').checked;
-
-      if (builderMode === 'yaml') {
-        let out = `service: ${service}\nupstream: ${upstream}\nbrowsers: ${browsers ? 'free' : 'metered'}\n`;
-        if (mcp) out += `mcp: true\n`;
-        out += `routes:\n`;
-        routes.forEach(r => {
-          const opts = [];
-          if (r.transform === 'structured' || (structured && r.path.includes('article'))) opts.push('transform: structured');
-          if (r.transform === 'escrow') opts.push('escrow: true');
-          if (opts.length) {
-            out += `  "${r.method} ${r.path}": { price: "${r.price}", ${opts.join(', ')} }\n`;
-          } else {
-            out += `  "${r.method} ${r.path}": "${r.price}"\n`;
-          }
-        });
-        document.getElementById('builderOutput').textContent = out;
-      } else {
-        let out = `import express from 'express';\nimport { vectoll } from '@vectoll/server';\n\nconst app = express();\napp.use(vectoll({\n  serviceName: '${service}',\n  browsers: '${browsers ? 'free' : 'metered'}',\n  mcp: ${mcp},\n  routes: {\n`;
-        routes.forEach(r => {
-          if (r.transform === 'escrow') {
-            out += `    '${r.method} ${r.path}': { price: '${r.price}', escrow: true },\n`;
-          } else if (r.transform === 'structured') {
-            out += `    '${r.method} ${r.path}': { price: '${r.price}', transform: 'structured' },\n`;
-          } else {
-            out += `    '${r.method} ${r.path}': '${r.price}',\n`;
-          }
-        });
-        out += `  },\n}));\n\napp.listen(3000);`;
-        document.getElementById('builderOutput').textContent = out;
-      }
-    }
-    renderRouteRows();
-    renderConfig();
-
-    // 6. 23-Currency Integer FX Engine (mirrors @vectoll/adapters rates)
-    const CURRENCIES = [
-      { code: 'USD', name: 'US Dollar', sym: '$', dec: 2, perUsd: 1.0 },
-      { code: 'USDC', name: 'USD Coin (x402)', sym: 'USDC ', dec: 6, perUsd: 1.0 },
-      { code: 'EUR', name: 'Euro (SEPA)', sym: '€', dec: 2, perUsd: 0.92 },
-      { code: 'GBP', name: 'British Pound', sym: '£', dec: 2, perUsd: 0.79 },
-      { code: 'JPY', name: 'Japanese Yen', sym: '¥', dec: 0, perUsd: 154.0 },
-      { code: 'CHF', name: 'Swiss Franc', sym: 'CHF ', dec: 2, perUsd: 0.88 },
-      { code: 'CAD', name: 'Canadian Dollar', sym: 'CA$', dec: 2, perUsd: 1.38 },
-      { code: 'AUD', name: 'Australian Dollar', sym: 'A$', dec: 2, perUsd: 1.53 },
-      { code: 'SGD', name: 'Singapore Dollar', sym: 'S$', dec: 2, perUsd: 1.34 },
-      { code: 'HKD', name: 'Hong Kong Dollar', sym: 'HK$', dec: 2, perUsd: 7.78 },
-      { code: 'INR', name: 'Indian Rupee (UPI)', sym: '₹', dec: 2, perUsd: 84.2 },
-      { code: 'BRL', name: 'Brazilian Real (PIX)', sym: 'R$', dec: 2, perUsd: 5.75 },
-      { code: 'MXN', name: 'Mexican Peso', sym: 'MX$', dec: 2, perUsd: 20.1 },
-      { code: 'KRW', name: 'South Korean Won', sym: '₩', dec: 0, perUsd: 1390.0 },
-      { code: 'AED', name: 'UAE Dirham', sym: 'AED ', dec: 2, perUsd: 3.6725 },
-      { code: 'SAR', name: 'Saudi Riyal', sym: 'SAR ', dec: 2, perUsd: 3.75 },
-      { code: 'PLN', name: 'Polish Zloty', sym: 'zł ', dec: 2, perUsd: 4.02 },
-      { code: 'SEK', name: 'Swedish Krona', sym: 'kr ', dec: 2, perUsd: 10.75 },
-      { code: 'ZAR', name: 'South African Rand', sym: 'R ', dec: 2, perUsd: 18.1 },
-      { code: 'NGN', name: 'Nigerian Naira', sym: '₦', dec: 2, perUsd: 1650.0 },
-      { code: 'KES', name: 'Kenyan Shilling', sym: 'KES ', dec: 2, perUsd: 129.0 },
-      { code: 'UGX', name: 'Ugandan Shilling', sym: 'UGX ', dec: 0, perUsd: 3700.0 },
-      { code: 'GHS', name: 'Ghanaian Cedi', sym: 'GH₵', dec: 2, perUsd: 15.8 },
-    ];
-
-    const fromSel = document.getElementById('fxFrom');
-    const toSel = document.getElementById('fxTo');
-    CURRENCIES.forEach(c => {
-      fromSel.add(new Option(`${c.code} — ${c.name}`, c.code));
-      toSel.add(new Option(`${c.code} — ${c.name}`, c.code));
-    });
-    fromSel.value = 'USD';
-    toSel.value = 'EUR';
-
-    function computeFx() {
-      const amt = Math.max(0, parseFloat(document.getElementById('fxAmount').value) || 0);
-      const from = CURRENCIES.find(c => c.code === fromSel.value);
-      const to = CURRENCIES.find(c => c.code === toSel.value);
-      const usdVal = amt / from.perUsd;
-      const converted = usdVal * to.perUsd;
-      const minorTo = Math.round(converted * Math.pow(10, to.dec));
-
-      document.getElementById('fxHeadline').textContent =
-        `${from.sym}${amt.toFixed(from.dec === 0 ? 0 : 2)} ${from.code} = ${to.sym}${(minorTo / Math.pow(10, to.dec)).toFixed(to.dec === 6 ? 4 : to.dec)} ${to.code}`;
-      document.getElementById('fxMinor').textContent =
-        `{ amount: "${minorTo}", currency: "${to.code}", decimals: ${to.dec} }`;
-
-      const matrix = document.getElementById('fxMatrix');
-      matrix.innerHTML = CURRENCIES.map(c => {
-        const val = usdVal * c.perUsd;
-        const m = Math.round(val * Math.pow(10, c.dec));
-        const disp = (m / Math.pow(10, c.dec)).toFixed(c.dec === 6 ? 4 : c.dec);
-        return `<div class="fx-pill"><div style="color:var(--ink-3);font-size:11px;">${c.code} (${c.dec} dec)</div><div style="font-weight:700;color:var(--ink-0);margin-top:2px;">${c.sym}${disp}</div></div>`;
-      }).join('');
-    }
-    computeFx();
-  </script>
+  <script src="./app.js"></script>
 </body>
 </html>

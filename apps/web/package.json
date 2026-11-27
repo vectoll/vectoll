@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Vectoll flagship websites — vectoll.org (Open Protocol) and vectoll.com (Vectoll Cloud)",
+  "description": "Vectoll flagship websites — vectoll.org (Open Protocol & WebCrypto Studio) and vectoll.com (Vectoll Cloud & Live Console)",
   "scripts": {
     "start": "node server.mjs",
     "dev": "node server.mjs",
-    "build": "node -e \"console.log('@vectoll/web static assets ready')\"",
-    "typecheck": "node --check server.mjs",
-    "test": "node -e \"import('node:fs').then(fs => { for (const p of ['org/index.html','com/index.html','../../brand/readme-banner.svg','../../brand/logo-wordmark-dark.svg']) { if (!fs.existsSync(p)) throw new Error('Missing ' + p); } console.log('@vectoll/web assets verified'); })\""
+    "build": "node sync-static.mjs",
+    "typecheck": "node --check server.mjs && node --check sync-static.mjs && node --check org/app.js && node --check com/app.js",
+    "test": "node -e \"import('node:fs').then(fs => { for (const p of ['org/index.html','org/styles.css','org/app.js','org/brand/logo-wordmark-dark.svg','org/.well-known/vectoll.json','com/index.html','com/styles.css','com/app.js','com/brand/logo-wordmark-dark.svg','com/.well-known/vectoll.json']) { if (!fs.existsSync(p)) throw new Error('Missing ' + p); } console.log('@vectoll/web standalone static bundles verified'); })\""
   }
 }
