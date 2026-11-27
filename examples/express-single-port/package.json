@@ -1,0 +1,14 @@
+{
+  "name": "@vectoll/example-express-single-port",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "@vectoll/core": "workspace:*",
+    "@vectoll/sdk": "workspace:*",
+    "@vectoll/server": "workspace:*"
+  }
+}

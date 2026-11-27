@@ -1,0 +1,39 @@
+version: "1.0"
+
+service:
+  name: "acme-hospitality-api"
+  description: "Real-time Kampala hotel inventory and escrow-protected room booking"
+  origin: "http://127.0.0.1:8080"
+  listen: ":4020"
+  discovery_path: "/.well-known/vectoll.json"
+  enable_mcp: true
+
+settlement:
+  facilitator_url: "http://127.0.0.1:4021"
+  default_currency: "UGX"
+  accepted_rails:
+    - "momo"
+    - "airtel_money"
+    - "x402_usdc"
+    - "stripe"
+    - "voucher"
+
+routes:
+  - path: "/api/v1/rooms/availability"
+    method: "GET"
+    price: 50
+    currency: "UGX"
+    human_passthrough: true
+    mcp_tool: "check_room_availability"
+    mcp_description: "Query live room inventory and nightly UGX rates"
+
+  - path: "/api/v1/rooms/book"
+    method: "POST"
+    price: 550000
+    currency: "UGX"
+    settlement_mode: "escrow"
+    require_mandate: true
+    hitl_threshold: 500000
+    human_passthrough: false
+    mcp_tool: "book_hotel_room"
+    mcp_description: "Reserve a hotel room with mandate-backed escrow"

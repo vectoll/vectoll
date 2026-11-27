@@ -1,0 +1,40 @@
+# Internal founder / strategy / roadmap documents (never pushed publicly)
+/internal/
+
+# Dependencies & build outputs
+node_modules/
+package-lock.json
+dist/
+bin/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+build/
+
+# Go
+services/gate/vectoll-gate
+*.test
+*.out
+
+# Runtime data & secrets
+data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+.env
+.env.*
+!.env.example
+
+# OS & IDE
+.DS_Store
+ThumbsInfo
+.idea/
+.vscode/
+*.swp

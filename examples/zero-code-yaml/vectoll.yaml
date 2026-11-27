@@ -1,0 +1,9 @@
+# Minimal 6-line vectoll.yaml — works in front of ANY app (Node, Python, Go, PHP, Rails, WordPress)
+origin: "http://127.0.0.1:8080"
+
+routes:
+  GET /api/search: "$0.005"
+  POST /api/summarize: "$0.02"
+  GET /articles/*:
+    price: "$0.001"
+    browsers: "free"

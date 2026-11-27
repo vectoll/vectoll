@@ -1,0 +1,28 @@
+version: "1.0"
+
+service:
+  name: "eastafrica-market-intel"
+  description: "Metered news & commodity intelligence — free human reader, $0.002 per structured agent query"
+  origin: "http://127.0.0.1:8081"
+  listen: ":4020"
+  enable_mcp: true
+
+settlement:
+  facilitator_url: "http://127.0.0.1:4021"
+  default_currency: "USD"
+  default_decimals: 6
+  accepted_rails:
+    - "x402_usdc"
+    - "stripe"
+    - "momo"
+    - "voucher"
+
+routes:
+  - path: "/articles/*"
+    method: "GET"
+    price: 2000 # 2,000 micro-USD ($0.002)
+    currency: "USD"
+    decimals: 6
+    human_passthrough: true
+    mcp_tool: "fetch_article_structured"
+    mcp_description: "Fetch licensed, structured article JSON ($0.002 per read)"

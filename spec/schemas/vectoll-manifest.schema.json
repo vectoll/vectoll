@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectoll.org/schemas/v0.1/vectoll-manifest.schema.json",
+  "title": "Vectoll Discovery Manifest (/.well-known/vectoll.json)",
+  "type": "object",
+  "required": ["vectollVersion", "x402Version", "service", "settlement", "routes"],
+  "properties": {
+    "vectollVersion": { "type": "string", "const": "0.1" },
+    "x402Version": { "type": "integer", "const": 2 },
+    "service": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "description": { "type": "string" },
+        "mcpEndpoint": { "type": ["string", "null"] }
+      }
+    },
+    "settlement": {
+      "type": "object",
+      "required": ["facilitatorUrl", "facilitatorKid", "defaultCurrency", "defaultDecimals", "acceptedRails"],
+      "properties": {
+        "facilitatorUrl": { "type": "string", "format": "uri" },
+        "jwksUrl": { "type": "string", "format": "uri" },
+        "facilitatorPublicKey": { "type": "string" },
+        "facilitatorKid": { "type": "string" },
+        "defaultCurrency": { "type": "string" },
+        "defaultDecimals": { "type": "integer", "minimum": 0, "maximum": 18 },
+        "acceptedRails": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+      }
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "method", "amount", "currency", "decimals", "settlementMode", "humanPassthrough"],
+        "properties": {
+          "path": { "type": "string" },
+          "method": { "type": "string" },
+          "pricingMode": { "type": "string", "enum": ["fixed", "dynamic_quote"] },
+          "amount": { "type": "integer", "minimum": 0 },
+          "currency": { "type": "string" },
+          "decimals": { "type": "integer", "minimum": 0, "maximum": 18 },
+          "settlementMode": { "type": "string", "enum": ["instant", "escrow"] },
+          "requireMandate": { "type": "boolean" },
+          "hitlThreshold": { "type": ["integer", "null"], "minimum": 0 },
+          "humanPassthrough": { "type": "boolean" },
+          "mcpTool": {
+            "type": ["object", "null"],
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

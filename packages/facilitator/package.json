@@ -1,0 +1,24 @@
+{
+  "name": "@vectoll/facilitator",
+  "version": "1.0.0",
+  "description": "Self-hostable clearing engine, SQLite double-entry integer ledger, Escrow state machine, and HITL approval server",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@vectoll/core": "workspace:*",
+    "@vectoll/adapters": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test dist/test/*.test.js"
+  }
+}

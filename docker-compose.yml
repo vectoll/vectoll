@@ -1,0 +1,14 @@
+services:
+  vectoll-dev:
+    build: .
+    ports:
+      - "4020:4020" # Vectoll Gate Reverse Proxy + /mcp
+      - "4021:4021" # Vectoll Facilitator Clearing API
+      - "4022:4022" # Vectoll Console Dashboard
+    volumes:
+      - vectoll_data:/app/data
+    environment:
+      - VECTOLL_FEE_BPS=150
+
+volumes:
+  vectoll_data:

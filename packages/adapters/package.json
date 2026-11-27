@@ -1,0 +1,23 @@
+{
+  "name": "@vectoll/adapters",
+  "version": "1.0.0",
+  "description": "Pluggable multi-rail settlement adapters (MTN MoMo, Airtel Money, M-Pesa, x402 USDC, Stripe, Voucher) and integer FX engine",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@vectoll/core": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test dist/test/*.test.js"
+  }
+}

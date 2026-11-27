@@ -1,0 +1,27 @@
+{
+  "name": "vectoll-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vectoll \u2014 The Open-Source Metering, Verification & Multi-Rail Settlement Layer for the Agentic Web",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vectoll/vectoll.git"
+  },
+  "homepage": "https://vectoll.org",
+  "engines": {
+    "node": ">=22.5.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "build": "pnpm -r --filter './packages/*' --filter './apps/*' run build",
+    "test": "pnpm -r --filter './packages/*' --filter './apps/*' run test",
+    "typecheck": "pnpm -r --filter './packages/*' --filter './apps/*' run typecheck",
+    "simulate": "node packages/cli/dist/bin.js simulate --rail x402_usdc",
+    "dev": "node packages/cli/dist/bin.js dev --config examples/global-cloud-ai/vectoll.yaml"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.7.2"
+  }
+}

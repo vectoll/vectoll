@@ -1,0 +1,27 @@
+{
+  "name": "@vectoll/cli",
+  "version": "1.0.0",
+  "description": "Developer CLI for Vectoll: init, keygen, dev sandbox, live 402 simulation, and token inspection",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "vectoll": "./dist/bin.js"
+  },
+  "main": "./dist/bin.js",
+  "dependencies": {
+    "@vectoll/core": "workspace:*",
+    "@vectoll/adapters": "workspace:*",
+    "@vectoll/facilitator": "workspace:*",
+    "@vectoll/edge": "workspace:*",
+    "@vectoll/sdk": "workspace:*",
+    "@vectoll/console": "workspace:*"
+  },
+  "devDependencies": {
+    "@vectoll/server": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test dist/test/*.test.js"
+  }
+}

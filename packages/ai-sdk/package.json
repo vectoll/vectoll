@@ -1,0 +1,29 @@
+{
+  "name": "@vectoll/ai-sdk",
+  "version": "1.0.0",
+  "description": "Turnkey AI Agent Toolkit for OpenAI, Anthropic, Google Gemini, Vercel AI SDK, and LangChain with automatic HTTP 402 / MCP discovery and session budget guards",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@vectoll/core": "workspace:*",
+    "@vectoll/sdk": "workspace:*"
+  },
+  "devDependencies": {
+    "@vectoll/edge": "workspace:*",
+    "@vectoll/facilitator": "workspace:*",
+    "@vectoll/server": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test dist/test/*.test.js"
+  }
+}

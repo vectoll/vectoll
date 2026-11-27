@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectoll.org/schemas/v0.1/spend-mandate.schema.json",
+  "title": "Vectoll Spend Mandate (vsm1) Claims",
+  "type": "object",
+  "required": ["v", "mandateId", "principalId", "agentId", "currency", "decimals", "maxPerCall", "maxDaily", "allowedServices", "allowedRails", "issuedAt", "expiresAt"],
+  "properties": {
+    "v": { "type": "integer", "const": 1 },
+    "mandateId": { "type": "string", "minLength": 4 },
+    "principalId": { "type": "string", "pattern": "^did:key:z[1-9A-HJ-NP-Za-km-z]+$" },
+    "agentId": { "type": "string", "pattern": "^did:key:z[1-9A-HJ-NP-Za-km-z]+$" },
+    "currency": { "type": "string", "minLength": 2 },
+    "decimals": { "type": "integer", "minimum": 0, "maximum": 18 },
+    "maxPerCall": { "type": "integer", "minimum": 1 },
+    "maxDaily": { "type": "integer", "minimum": 1 },
+    "allowedServices": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "allowedRails": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "hitlThreshold": { "type": ["integer", "null"], "minimum": 0 },
+    "purpose": { "type": "string" },
+    "issuedAt": { "type": "integer", "minimum": 0 },
+    "expiresAt": { "type": "integer", "minimum": 0 }
+  },
+  "additionalProperties": false
+}

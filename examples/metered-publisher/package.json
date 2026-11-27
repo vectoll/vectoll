@@ -1,0 +1,15 @@
+{
+  "name": "@vectoll/example-metered-publisher",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node demo.mjs"
+  },
+  "dependencies": {
+    "@vectoll/core": "workspace:*",
+    "@vectoll/edge": "workspace:*",
+    "@vectoll/facilitator": "workspace:*",
+    "@vectoll/sdk": "workspace:*"
+  }
+}

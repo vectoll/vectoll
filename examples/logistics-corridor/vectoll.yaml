@@ -1,0 +1,28 @@
+version: "1.0"
+
+service:
+  name: "northern-corridor-freight"
+  description: "Mombasa-Nairobi-Kampala-Kigali live truck capacity & freight quoting API"
+  origin: "http://127.0.0.1:8082"
+  listen: ":4020"
+  enable_mcp: true
+
+settlement:
+  facilitator_url: "http://127.0.0.1:4021"
+  default_currency: "KES"
+  default_decimals: 2
+  accepted_rails:
+    - "mpesa"
+    - "airtel_money"
+    - "x402_usdc"
+    - "stripe"
+
+routes:
+  - path: "/api/v1/freight/quote"
+    method: "GET"
+    price: 500 # 5.00 KES (500 cents) per live lane quote
+    currency: "KES"
+    decimals: 2
+    human_passthrough: false
+    mcp_tool: "quote_freight_lane"
+    mcp_description: "Get live 40ft container spot quote across East African corridor"

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectoll.org/schemas/v0.1/vrt-claims.schema.json",
+  "title": "Vectoll Receipt Token (vrt1) Claims",
+  "type": "object",
+  "required": ["v", "jti", "kid", "iss", "sub", "aud", "chg", "req", "amt", "cur", "dec", "rail", "mode", "iat", "exp"],
+  "properties": {
+    "v": { "type": "integer", "const": 1 },
+    "jti": { "type": "string", "minLength": 4 },
+    "kid": { "type": "string", "minLength": 1 },
+    "iss": { "type": "string", "minLength": 1 },
+    "sub": { "type": "string", "minLength": 4 },
+    "aud": { "type": "string", "minLength": 1 },
+    "chg": { "type": "string", "minLength": 4 },
+    "req": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "amt": { "type": "integer", "minimum": 0 },
+    "cur": { "type": "string", "minLength": 2 },
+    "dec": { "type": "integer", "minimum": 0, "maximum": 18 },
+    "rail": { "type": "string", "minLength": 1 },
+    "mode": { "type": "string", "enum": ["instant", "escrow"] },
+    "esc": { "type": "string" },
+    "iat": { "type": "integer", "minimum": 0 },
+    "exp": { "type": "integer", "minimum": 0 }
+  },
+  "additionalProperties": false
+}
